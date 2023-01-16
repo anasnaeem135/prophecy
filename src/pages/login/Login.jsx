@@ -1,5 +1,5 @@
 import React from 'react';
-import ProphecyLogo from '../icon.png';
+import ProphecyLogo from 'images/icon.png';
 import './Login.css';
 
 import Form from './components/form';
@@ -29,20 +29,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// const styles = {
-//     body: {
-//         backgroundColor: 'blue',
-//     },
-
-//     card: {
-//         flexDirection: 'row',
-//         borderColor: 'black',
-//         borderWidth: 10,
-//     },
-
-//     inputFields: {
-//         position: 'abosolute',
-//         padding: 10,
-//     },
-// };
