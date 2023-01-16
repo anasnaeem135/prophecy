@@ -6,4 +6,5 @@ export const loginValidationSchema = yup.object().shape({
         .email('Please enter valid email')
         .required('Email is required'),
     password: yup.string().required('Password is required'),
+    remember: yup.boolean().optional(),
 });

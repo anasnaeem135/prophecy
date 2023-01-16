@@ -28,3 +28,18 @@
 .inputFields {
     padding: 5px;
 }
+
+.pallete {
+    color: linear-gradient(
+        to bottom right,
+        #ec7553,
+        #f5903f,
+        #df3c63,
+        #e35063,
+        #da2564,
+        #dc166c,
+        #e45c5c,
+        #f18344,
+        #dc5c5c
+    );
+}
