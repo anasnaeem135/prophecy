@@ -64,9 +64,11 @@ const Form = ({
 
                         <br></br>
 
-                        {errors.firstName &&
-                            touched.firstName &&
-                            errors.firstName}
+                        <p className="warning">
+                            {errors.firstName &&
+                                touched.firstName &&
+                                errors.firstName}
+                        </p>
 
                         <br></br>
 
@@ -85,7 +87,11 @@ const Form = ({
 
                         <br></br>
 
-                        {errors.lastName && touched.lastName && errors.lastName}
+                        <p className="warning">
+                            {errors.lastName &&
+                                touched.lastName &&
+                                errors.lastName}
+                        </p>
 
                         <br></br>
 
@@ -104,7 +110,9 @@ const Form = ({
 
                         <br></br>
 
-                        {errors.email && touched.email && errors.email}
+                        <p className="warning">
+                            {errors.email && touched.email && errors.email}
+                        </p>
 
                         <br></br>
 
@@ -123,7 +131,11 @@ const Form = ({
 
                         <br></br>
 
-                        {errors.password && touched.password && errors.password}
+                        <p className="warning">
+                            {errors.password &&
+                                touched.password &&
+                                errors.password}
+                        </p>
 
                         <br></br>
 
@@ -142,9 +154,11 @@ const Form = ({
 
                         <br></br>
 
-                        {errors.confirmPassword &&
-                            touched.confirmPassword &&
-                            errors.confirmPassword}
+                        <p className="warning">
+                            {errors.confirmPassword &&
+                                touched.confirmPassword &&
+                                errors.confirmPassword}
+                        </p>
 
                         <br></br>
 

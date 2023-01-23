@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Formik } from 'formik';
 import { loginValidationSchema } from '../helpers/validationSchema';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -18,15 +18,9 @@ const Form = ({
     onSubmit,
 }) => {
     const [formInitialValues] = useState(initialValues);
-    const navigate = useNavigate();
 
     const handleOnClick = d => {
         onSubmit(d);
-    };
-
-    const navigateToSignup = () => {
-        // alert('clicked');
-        navigate('/signup');
     };
 
     return (
@@ -126,9 +120,7 @@ const Form = ({
 
                         <br></br>
 
-                        <Link
-                            style={{ color: 'black' }}
-                            onClick={navigateToSignup}>
+                        <Link style={{ color: 'black' }} to="signup">
                             Don't have an account? Sign Up
                         </Link>
                     </form>

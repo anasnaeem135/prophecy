@@ -1,12 +1,10 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
 
 import ProphecyLogo from 'images/icon.png';
 import './Login.css';
 
 import Form from './components/form';
-
-import Divider from '@mui/material/Divider';
+import Divider from 'components/divider/divider';
 
 const Login = () => {
     const onSubmitForm = formData => {
@@ -19,7 +17,7 @@ const Login = () => {
             <div className="card">
                 <img src={ProphecyLogo} alt="app logo" />
 
-                <div className="vl"></div>
+                <Divider />
 
                 <Form onSubmit={onSubmitForm} />
             </div>

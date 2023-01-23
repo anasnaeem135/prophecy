@@ -4,7 +4,7 @@ import ProphecyLogo from 'images/icon.png';
 import './Signup.css';
 
 import Form from './components/form';
-import Divider from '@mui/material/Divider';
+import Divider from 'components/divider/divider';
 
 const Signup = () => {
     const onSubmitForm = formData => {
@@ -17,11 +17,8 @@ const Signup = () => {
             <div className="card">
                 <img src={ProphecyLogo} alt="app logo" />
 
-                <Divider
-                    orientation="vertical"
-                    flexItem
-                    sx={{ paddingRight: 5 }}
-                />
+                {/* <div className="divider"></div> */}
+                <Divider />
 
                 <Form onSubmit={onSubmitForm} />
             </div>

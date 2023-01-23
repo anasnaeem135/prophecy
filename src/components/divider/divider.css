@@ -1,0 +1,10 @@
+.divider {
+    color: #dc166c;
+    border-left: 6px solid;
+    height: 400px;
+    left: 50%;
+    margin-left: -3px;
+    margin-inline: 10px;
+    top: 0;
+    border-radius: 10px;
+}
