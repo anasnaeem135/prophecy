@@ -5,12 +5,11 @@ import { signupValidationSchema } from '../helpers/validationSchema';
 
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
+// import FormControlLabel from '@mui/material/FormControlLabel';
 import { ThemeProvider } from '@mui/material/styles';
 
 import { theme } from 'styles/theme';
-
 import '../Signup.css';
 
 const Form = ({
@@ -44,7 +43,6 @@ const Form = ({
                 handleChange,
                 handleBlur,
                 handleSubmit,
-                setFieldValue,
                 values,
                 errors,
                 touched,

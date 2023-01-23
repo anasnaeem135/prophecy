@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Formik } from 'formik';
 import { loginValidationSchema } from '../helpers/validationSchema';
+import { useNavigate, Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -10,7 +11,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { ThemeProvider } from '@mui/material/styles';
 
 import { theme } from 'styles/theme';
-
 import '../Login.css';
 
 const Form = ({
@@ -18,9 +18,15 @@ const Form = ({
     onSubmit,
 }) => {
     const [formInitialValues] = useState(initialValues);
+    const navigate = useNavigate();
 
     const handleOnClick = d => {
         onSubmit(d);
+    };
+
+    const navigateToSignup = () => {
+        // alert('clicked');
+        navigate('/signup');
     };
 
     return (
@@ -64,7 +70,9 @@ const Form = ({
 
                         <br></br>
 
-                        {errors.email && touched.email && errors.email}
+                        <p className="warning">
+                            {errors.email && touched.email && errors.email}
+                        </p>
 
                         <br></br>
 
@@ -83,7 +91,11 @@ const Form = ({
 
                         <br></br>
 
-                        {errors.password && touched.password && errors.password}
+                        <p className="warning">
+                            {errors.password &&
+                                touched.password &&
+                                errors.password}
+                        </p>
 
                         <br></br>
 
@@ -111,6 +123,14 @@ const Form = ({
                                 label="Remeber Me"
                             />
                         </ThemeProvider>
+
+                        <br></br>
+
+                        <Link
+                            style={{ color: 'black' }}
+                            onClick={navigateToSignup}>
+                            Don't have an account? Sign Up
+                        </Link>
                     </form>
                 );
             }}

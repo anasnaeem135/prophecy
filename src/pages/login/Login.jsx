@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+
 import ProphecyLogo from 'images/icon.png';
 import './Login.css';
 
 import Form from './components/form';
+
 import Divider from '@mui/material/Divider';
 
 const Login = () => {
@@ -16,11 +19,7 @@ const Login = () => {
             <div className="card">
                 <img src={ProphecyLogo} alt="app logo" />
 
-                <Divider
-                    orientation="vertical"
-                    flexItem
-                    sx={{ paddingRight: 5 }}
-                />
+                <div className="vl"></div>
 
                 <Form onSubmit={onSubmitForm} />
             </div>

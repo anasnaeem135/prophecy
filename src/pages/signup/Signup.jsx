@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ProphecyLogo from 'images/icon.png';
 import './Signup.css';
 

@@ -12,7 +12,7 @@ export const signupValidationSchema = yup.object().shape({
         .string()
         .test(
             'confirmPasswordEqualsPassword',
-            'Confirm Password does not matches Password.',
+            'Confirm Password does not match password.',
             function (confirmPassword) {
                 const { password } = this.parent;
                 if (confirmPassword !== password) {
