@@ -49,14 +49,10 @@ const Form = ({
             }) => {
                 return (
                     <form onSubmit={handleSubmit}>
-                        <label>Enter First Name</label>
-
-                        <br></br>
-
                         <input
                             className="inputFields"
                             type="name"
-                            placeholder="Enter your first name"
+                            placeholder="First Name"
                             onChange={handleChange('firstName')}
                             onBlur={handleBlur('firstName')}
                             value={values.firstName}
@@ -72,14 +68,10 @@ const Form = ({
 
                         <br></br>
 
-                        <label>Enter Last Name</label>
-
-                        <br></br>
-
                         <input
                             className="inputFields"
                             type="name"
-                            placeholder="Enter your last name"
+                            placeholder="Last Name"
                             onChange={handleChange('lastName')}
                             onBlur={handleBlur('lastName')}
                             value={values.lastName}
@@ -95,14 +87,10 @@ const Form = ({
 
                         <br></br>
 
-                        <label>Enter email</label>
-
-                        <br></br>
-
                         <input
                             className="inputFields"
                             type="email"
-                            placeholder="Enter your email"
+                            placeholder="Email"
                             onChange={handleChange('email')}
                             onBlur={handleBlur('email')}
                             value={values.email}
@@ -116,14 +104,10 @@ const Form = ({
 
                         <br></br>
 
-                        <label>Enter Password</label>
-
-                        <br></br>
-
                         <input
                             className="inputFields"
                             type="password"
-                            placeholder="Enter your password"
+                            placeholder="Password"
                             onChange={handleChange('password')}
                             value={values.password}
                             onBlur={handleBlur('password')}
@@ -139,14 +123,10 @@ const Form = ({
 
                         <br></br>
 
-                        <label>Enter Password Again</label>
-
-                        <br></br>
-
                         <input
                             className="inputFields"
                             type="password"
-                            placeholder="Enter your password again"
+                            placeholder="Confirm Password"
                             onChange={handleChange('confirmPassword')}
                             value={values.confirmPassword}
                             onBlur={handleBlur('confirmPassword')}

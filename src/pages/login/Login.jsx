@@ -6,10 +6,13 @@ import './Login.css';
 import Form from './components/form';
 import Divider from 'components/divider/divider';
 
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+    const navigate = useNavigate();
+
     const onSubmitForm = formData => {
-        alert('Logged in!');
-        console.log('This is the main page', formData);
+        navigate('connectWallet');
     };
 
     return (
