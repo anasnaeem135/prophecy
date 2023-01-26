@@ -1,0 +1,31 @@
+.body {
+    /* background-color: blueviolet; */
+    /* align-items: center; */
+    background: linear-gradient(
+        to bottom right,
+        #ec7553,
+        #f5903f,
+        #df3c63,
+        #e35063,
+        #da2564,
+        #dc166c,
+        #e45c5c,
+        #f18344,
+        #dc5c5c
+    );
+}
+
+.title {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.button {
+    /* margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    align-self: center;
+}

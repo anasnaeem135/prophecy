@@ -1,14 +1,27 @@
 .body {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    height: 625px;
+    background: linear-gradient(
+        to bottom right,
+        #ec7553,
+        #f5903f,
+        #df3c63,
+        #e35063,
+        #da2564,
+        #dc166c,
+        #e45c5c,
+        #f18344,
+        #dc5c5c
+    );
 }
 
 .card {
     margin: 0;
-    width: 50%;
+    width: 700px;
     border-radius: 20px;
     padding: 10px;
     flex-direction: row;
-    background-color: aquamarine;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +38,6 @@
     height: 40px;
     border-color: #da2564;
     border-width: 5px;
-    color: #e45c5c;
 }
 
 ::placeholder {
@@ -34,7 +46,8 @@
 }
 
 .pallete {
-    color: linear-gradient(
+    align-items: center;
+    background: linear-gradient(
         to bottom right,
         #ec7553,
         #f5903f,

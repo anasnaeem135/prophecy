@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProphecyLogo from 'images/icon.png';
-import './Login.css';
+import style from './Login.module.css';
 
 import Form from './components/form';
 import Divider from 'components/divider/divider';
@@ -16,8 +16,8 @@ const Login = () => {
     };
 
     return (
-        <div className="body">
-            <div className="card">
+        <div className={style.body}>
+            <div className={style.card}>
                 <img src={ProphecyLogo} alt="app logo" />
 
                 <Divider />

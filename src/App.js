@@ -3,11 +3,13 @@ import './App.css';
 
 import Routing from 'routes/router';
 
+import { MoralisProvider } from 'react-moralis';
+
 const App = () => {
     return (
-        <div className="App">
+        <MoralisProvider initializeOnMount={false}>
             <Routing />
-        </div>
+        </MoralisProvider>
     );
 };
 

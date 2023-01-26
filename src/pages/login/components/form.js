@@ -11,7 +11,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 import CustomButton from 'components/button';
 import { theme } from 'styles/theme';
-import '../Login.css';
+import style from '../Login.module.css';
 
 const Form = ({
     initialValues = { email: '', password: '', remember: false },
@@ -50,7 +50,7 @@ const Form = ({
                 return (
                     <form onSubmit={handleSubmit}>
                         <input
-                            className="inputFields"
+                            className={style.inputFields}
                             type="email"
                             placeholder="Enter your email"
                             onChange={handleChange('email')}
@@ -60,14 +60,14 @@ const Form = ({
 
                         <br></br>
 
-                        <p className="warning">
+                        <p className={style.warning}>
                             {errors.email && touched.email && errors.email}
                         </p>
 
                         <br></br>
 
                         <input
-                            className="inputFields"
+                            className={style.inputFields}
                             type="password"
                             placeholder="Enter your password"
                             onChange={handleChange('password')}
@@ -77,7 +77,7 @@ const Form = ({
 
                         <br></br>
 
-                        <p className="warning">
+                        <p className={style.warning}>
                             {errors.password &&
                                 touched.password &&
                                 errors.password}

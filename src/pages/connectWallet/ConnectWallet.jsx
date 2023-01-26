@@ -1,25 +1,22 @@
 import React from 'react';
 
-import './ConnectWallet.css';
+import style from './ConnectWallet.module.css';
 
-import CustomButton from 'components/button';
-import WalletIcon from '@mui/icons-material/Wallet';
+import { ConnectButton } from '@web3uikit/web3';
 
 const ConnectWalltet = () => {
     return (
-        <div className="body">
-            <h1 className="title">
+        <div className={style.body}>
+            <h1 className={style.title}>
                 Before you start using our platform you need to connect your
-                MetaMask wallet!
+                wallet!
             </h1>
 
             <br></br>
 
-            <CustomButton
-                size="large"
-                title="Connect Wallet"
-                icon={<WalletIcon />}
-            />
+            <div>
+                <ConnectButton moralisAuth={false} />
+            </div>
         </div>
     );
 };

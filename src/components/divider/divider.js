@@ -1,8 +1,9 @@
 import React from 'react';
-import './divider.css';
+import style from './divider.module.css';
 
 const Divider = () => {
-    return <div className="divider"></div>;
+    console.log('Inside divider');
+    return <div className={style.divider}></div>;
 };
 
 export default Divider;
