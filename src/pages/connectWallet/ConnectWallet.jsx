@@ -15,7 +15,10 @@ const ConnectWalltet = () => {
             <br></br>
 
             <div>
-                <ConnectButton moralisAuth={false} />
+                <ConnectButton
+                    moralisAuth={true}
+                    signingMessage={'Wallet connected succesfully'}
+                />
             </div>
         </div>
     );

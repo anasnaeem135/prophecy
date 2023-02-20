@@ -2,10 +2,9 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
-
 import { theme } from 'styles/theme';
 
-const CustomButton = ({ size, icon, title, onClick }) => {
+const CustomButton = ({ size, icon, title, onClick, color = 'primary' }) => {
     return (
         <ThemeProvider theme={theme}>
             <Button
@@ -13,7 +12,7 @@ const CustomButton = ({ size, icon, title, onClick }) => {
                 endIcon={icon || null}
                 size={size || 'small'}
                 onClick={onClick}
-                color="primary"
+                color={color}
                 sx={{ borderRadius: 50 }}>
                 {title}
             </Button>

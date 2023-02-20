@@ -5,6 +5,7 @@ import style from './Login.module.css';
 
 import Form from './components/form';
 import Divider from 'components/divider/divider';
+import Header from 'components/header/header';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -16,15 +17,16 @@ const Login = () => {
     };
 
     return (
-        <div className={style.body}>
-            <div className={style.card}>
-                <img src={ProphecyLogo} alt="app logo" />
-
-                <Divider />
-
-                <Form onSubmit={onSubmitForm} />
-            </div>
-        </div>
+        <>
+            <Header />
+            {/* <div className={style.body}>
+                <div className={style.card}>
+                    <img src={ProphecyLogo} alt="app logo" />
+                    <Divider />
+                    <Form onSubmit={onSubmitForm} />
+                </div>
+            </div> */}
+        </>
     );
 };
 

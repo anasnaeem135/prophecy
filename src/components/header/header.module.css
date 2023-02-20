@@ -1,0 +1,27 @@
+.main {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.button {
+    font-weight: bold;
+    border: none;
+    background: none;
+    font-size: large;
+}
+
+.buttonBox {
+    display: flex;
+    right: 25px;
+    justify-content: space-between;
+    position: absolute;
+}

@@ -11,10 +11,10 @@ export const theme = createTheme({
             // contrastText: will be calculated to contrast with palette.primary.main
         },
         secondary: {
-            light: '#0066ff',
-            main: '#0044ff',
+            light: '#FFFFFF',
+            main: '#FFFFFF',
             // dark: will be calculated from palette.secondary.main,
-            contrastText: '#ffcc00',
+            contrastText: '#000000',
         },
         // Provide every color token (light, main, dark, and contrastText) when using
         // custom colors for props in Material UI's components.
