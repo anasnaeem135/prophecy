@@ -19,12 +19,17 @@ const Footer = () => {
 
             <div className={style.group2}>
                 <b className={style.title}>Prophecy Links</b>
-                <CustomButton title="Home" size="medium" />
+                <CustomButton title="Home" size="medium" color="secondary" />
                 <CustomButton
                     title="About Us"
                     size="medium"
                     color="secondary"
                 />
+            </div>
+
+            <div className={style.group3}>
+                <b className={style.title}>Contact Us</b>
+                <b className={style.title}>+92 333 125 1264</b>
             </div>
         </div>
     );
