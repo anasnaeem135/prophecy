@@ -1,32 +1,18 @@
-.body {
-    /* background-color: aquamarine; */
-    height: 625px;
-    background: linear-gradient(
-        to bottom right,
-        #ec7553,
-        #f5903f,
-        #df3c63,
-        #e35063,
-        #da2564,
-        #dc166c,
-        #e45c5c,
-        #f18344,
-        #dc5c5c
-    );
-}
-
 .card {
+    margin-top: 100px;
     margin: 0;
     width: 700px;
+    height: 400px;
     border-radius: 20px;
     padding: 10px;
+    gap: 25px;
     flex-direction: row;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

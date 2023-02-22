@@ -1,4 +1,6 @@
 .body {
+    display: flex;
+    align-content: center;
     height: 625px;
     background: linear-gradient(
         to bottom right,
@@ -14,33 +16,20 @@
     );
 }
 
-.divider {
-    color: #dc166c;
-    border-left: 6px solid;
-    height: 400px;
-    left: 50%;
-    margin-left: -3px;
-    margin-inline: 10px;
-    top: 0;
-    border-radius: 10px;
-}
-
 .card {
-    /* vertical-align: center; */
     margin: 0;
-    width: 50%;
-    /* border: 3px solid green; */
+    width: 55%;
+    gap: 40px;
     border-radius: 20px;
     padding: 10px;
     flex-direction: row;
-    /* background-color: aquamarine; */
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
     background-color: white;
-    top: 50%;
+    top: 65%;
     left: 50%;
+    position: absolute;
     transform: translate(-50%, -50%);
 }
 
@@ -55,19 +44,4 @@
 
 .warning {
     color: red;
-}
-
-.pallete {
-    color: linear-gradient(
-        to bottom right,
-        #ec7553,
-        #f5903f,
-        #df3c63,
-        #e35063,
-        #da2564,
-        #dc166c,
-        #e45c5c,
-        #f18344,
-        #dc5c5c
-    );
 }

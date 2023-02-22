@@ -18,14 +18,11 @@ const Login = () => {
 
     return (
         <>
-            <Header />
-            {/* <div className={style.body}>
-                <div className={style.card}>
-                    <img src={ProphecyLogo} alt="app logo" />
-                    <Divider />
-                    <Form onSubmit={onSubmitForm} />
-                </div>
-            </div> */}
+            <div className={style.card}>
+                <img src={ProphecyLogo} alt="app logo" />
+
+                <Form onSubmit={onSubmitForm} />
+            </div>
         </>
     );
 };

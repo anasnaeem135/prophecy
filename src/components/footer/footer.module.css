@@ -1,7 +1,6 @@
 .main {
     width: 100%;
     bottom: 0;
-    position: fixed;
     height: 130px;
     flex-direction: row;
     justify-content: space-between;

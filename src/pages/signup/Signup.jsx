@@ -5,6 +5,7 @@ import style from './Signup.module.css';
 
 import Form from './components/form';
 import Divider from 'components/divider/divider';
+import Header from 'components/header/header';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -12,20 +13,23 @@ const Signup = () => {
 
     const onSubmitForm = formData => {
         alert('Signed Up!');
-        console.log('This is the main page', formData);
         navigate(-1);
     };
 
     return (
-        <div className={style.body}>
-            <div className={style.card}>
-                <img src={ProphecyLogo} alt="app logo" />
+        <>
+            <Header login={false} aboutUs={false} />
 
-                <Divider />
+            <div className={style.body}>
+                <div className={style.card}>
+                    <img src={ProphecyLogo} alt="app logo" />
 
-                <Form onSubmit={onSubmitForm} />
+                    <Divider />
+
+                    <Form onSubmit={onSubmitForm} />
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
