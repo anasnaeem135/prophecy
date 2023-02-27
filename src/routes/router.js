@@ -5,6 +5,7 @@ import LandingPage from 'pages/landingPage/LandingPage';
 import Login from 'pages/login/Login';
 import Signup from 'pages/signup/Signup';
 import ConnectWallet from 'pages/connectWallet/ConnectWallet';
+import Choose from 'pages/choose/Choose';
 
 const Routing = () => {
     return (
@@ -14,6 +15,8 @@ const Routing = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/connectWallet" element={<ConnectWallet />} />
+                <Route path="/connectWallet" element={<ConnectWallet />} />
+                <Route path="/choose" element={<Choose />} />
             </Routes>
         </BrowserRouter>
     );

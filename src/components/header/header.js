@@ -4,7 +4,12 @@ import style from './header.module.css';
 import CustomButton from 'components/button';
 import { useNavigate } from 'react-router-dom';
 
-const Header = ({ visible, login = true, home = true, aboutUs = true }) => {
+const Header = ({
+    visible,
+    button1 = { show: true, title: 'Home' },
+    button2 = { show: true, title: 'About Us' },
+    button3 = { show: true, title: 'Login' },
+}) => {
     const navigate = useNavigate();
 
     const handleClickLogin = () => {
@@ -27,19 +32,19 @@ const Header = ({ visible, login = true, home = true, aboutUs = true }) => {
             </b>
 
             <div className={style.buttonBox}>
-                {home ? (
+                {button1.show ? (
                     <button className={style.button} onClick={handleClickHome}>
-                        Home
+                        {button1.title}
                     </button>
                 ) : null}
 
-                {aboutUs ? (
-                    <button className={style.button}>About Us</button>
+                {button2.show ? (
+                    <button className={style.button}>{button2.title}</button>
                 ) : null}
 
-                {login ? (
+                {button3.show ? (
                     <CustomButton
-                        title="Login"
+                        title={button3.title}
                         size="large"
                         onClick={handleClickLogin}
                     />
