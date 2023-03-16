@@ -1,0 +1,33 @@
+.body {
+    height: 625px;
+    background: linear-gradient(
+        to bottom right,
+        #ec7553,
+        #f5903f,
+        #df3c63,
+        #e35063,
+        #da2564,
+        #dc166c,
+        #e45c5c,
+        #f18344,
+        #dc5c5c
+    );
+}
+
+.img {
+    border-radius: 25px;
+}
+
+.text {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+}
+
+.container {
+    background: white;
+    width: 50px;
+    height: 50px;
+}

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-
 import { Formik } from 'formik';
-import { loginValidationSchema } from '../helpers/validationSchema';
 import { Link } from 'react-router-dom';
-
 import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import { loginValidationSchema } from '../helpers/validationSchema';
 import { ThemeProvider } from '@mui/material/styles';
 import SendIcon from '@mui/icons-material/Send';
 
+import FormControlLabel from '@mui/material/FormControlLabel';
 import CustomButton from 'components/button';
 import { theme } from 'styles/theme';
+
 import style from '../Login.module.css';
 
 const Form = ({
