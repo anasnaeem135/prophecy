@@ -31,3 +31,19 @@
     width: 50px;
     height: 50px;
 }
+
+.checkbox {
+    color: aqua;
+}
+
+.cardContainer {
+    background: white;
+    border-radius: 25px;
+    /* display: flex; */
+    vertical-align: middle;
+    width: 25%;
+    align-self: center;
+    /* float: right; */
+    /* margin-left: 10px; */
+    flex-direction: column;
+}
