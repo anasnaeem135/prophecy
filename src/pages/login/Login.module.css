@@ -29,6 +29,7 @@
 ::placeholder {
     color: #f5903f;
     font-weight: bold;
+    /* text-align: center; */
 }
 
 .pallete {
