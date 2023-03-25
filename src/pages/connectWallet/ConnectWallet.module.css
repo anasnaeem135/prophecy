@@ -48,3 +48,10 @@
     align-items: center;
     gap: 20px;
 }
+
+.nextBtn {
+    position: absolute;
+    padding-top: 260px;
+    margin-inline-start: 80%;
+    /* right: 100px; */
+}
