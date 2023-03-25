@@ -1,15 +1,31 @@
 import React from 'react';
 
-// import GridCarousal from './components/Carousal';
+import CardSlider from './components/cardSlider';
+
 import Header from 'components/header/header';
 import style from './SportsLive.module.css';
 
+import Form from './components/form';
+
 const SportsLive = () => {
+    const handleSubmit = v => {
+        console.log(v);
+    };
+
     return (
         <>
             <Header />
+            <div className={style.body}>
+                <CardSlider />
 
-            <div className={style.body}>{/* <GridCarousal /> */}</div>
+                <br></br>
+
+                <div className={style.cardContainer}>
+                    <Form onSubmit={handleSubmit} />
+                </div>
+
+                <br></br>
+            </div>
         </>
     );
 };

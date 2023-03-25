@@ -15,6 +15,7 @@
     "@web3uikit/core": "^0.2.44",
     "@web3uikit/icons": "^0.2.41",
     "@web3uikit/web3": "^0.2.2",
+    "ethers": "^6.2.2",
     "formik": "^2.2.9",
     "i": "^0.3.7",
     "magic-sdk": "^13.1.0",
@@ -26,6 +27,7 @@
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.0",
+    "web3": "^1.9.0",
     "yup": "^0.32.11"
   },
   "scripts": {

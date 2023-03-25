@@ -37,6 +37,7 @@
 }
 
 .cardContainer {
+    margin-inline-start: 37.5%;
     padding: 5px;
     background: white;
     border-radius: 25px;

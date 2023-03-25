@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 
-import { cryptoValidationSchema } from '../helpers/validationSchema';
+import { sportsValidationSchema } from '../helpers/validationSchema';
 import CustomButton from 'components/button';
 
 import Radio from '@mui/material/Radio';
@@ -11,12 +11,11 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { theme } from 'styles/theme';
 import { ThemeProvider } from '@mui/material/styles';
-import style from '../CryptoLive.module.css';
+import style from '../SportsLive.module.css';
 
 const Form = ({
     initialValues = {
-        period: '',
-        amount: 0,
+        team: '',
     },
     onSubmit,
 }) => {
@@ -29,7 +28,7 @@ const Form = ({
     return (
         <Formik
             initialValues={formInitialValues}
-            validationSchema={cryptoValidationSchema}
+            validationSchema={sportsValidationSchema}
             onSubmit={(values, { resetForm }) => {
                 setTimeout(() => {
                     handleOnClick({ ...values });
@@ -43,52 +42,29 @@ const Form = ({
                         <div className={style.child}>
                             <ThemeProvider theme={theme}>
                                 <FormControl>
-                                    <FormLabel id="demo-radio-buttons-group-label" />
+                                    <FormLabel id="sports-live-radio-group" />
 
                                     <RadioGroup
-                                        aria-labelledby="demo-radio-buttons-group-label"
-                                        value={values.period}
-                                        onChange={handleChange('period')}
+                                        aria-labelledby="sports-live-radio-group"
+                                        value={values.team}
+                                        onChange={handleChange('team')}
                                         name="radio-buttons-group">
                                         <FormControlLabel
-                                            value="hourly"
+                                            value="Team A"
                                             control={<Radio />}
-                                            label="Hourly"
+                                            label="Team A"
                                         />
 
                                         <FormControlLabel
-                                            value="weekly"
+                                            value="Team B"
                                             control={<Radio />}
-                                            label="Weekly"
-                                        />
-
-                                        <FormControlLabel
-                                            value="monthly"
-                                            control={<Radio />}
-                                            label="Monthly"
+                                            label="Team B"
                                         />
                                     </RadioGroup>
                                 </FormControl>
 
                                 <p className={style.warning}>
-                                    {errors.period &&
-                                        touched.period &&
-                                        errors.period}
-                                </p>
-
-                                <input
-                                    placeholder="Enter Amount"
-                                    value={values.amount}
-                                    className={style.inputFields}
-                                    type="number"
-                                    min="0"
-                                    onChange={handleChange('amount')}
-                                />
-
-                                <p className={style.warning}>
-                                    {errors.amount &&
-                                        touched.amount &&
-                                        errors.amount}
+                                    {errors.team && touched.team && errors.team}
                                 </p>
 
                                 <CustomButton
