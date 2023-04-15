@@ -11,8 +11,18 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
     const navigate = useNavigate();
 
-    const onSubmitForm = formData => {
-        alert('Signed Up!');
+    const onSubmitForm = async formData => {
+        console.log(formData);
+        const res = await fetch('http://localhost:8080/demo', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        console.log(res);
+
         navigate(-1);
     };
 

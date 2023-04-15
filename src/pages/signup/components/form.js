@@ -12,6 +12,7 @@ const Form = ({
         firstName: '',
         lastName: '',
         email: '',
+        phoneNo: '',
         password: '',
         confirmPassword: '',
     },
@@ -89,6 +90,23 @@ const Form = ({
                             onChange={handleChange('email')}
                             onBlur={handleBlur('email')}
                             value={values.email}
+                        />
+
+                        <br></br>
+
+                        <p className={style.warning}>
+                            {errors.email && touched.email && errors.email}
+                        </p>
+
+                        <br></br>
+
+                        <input
+                            className={style.inputFields}
+                            type="number"
+                            placeholder="Phone Number"
+                            onChange={handleChange('phoneNo')}
+                            onBlur={handleBlur('phoneNo')}
+                            value={values.phoneNo}
                         />
 
                         <br></br>

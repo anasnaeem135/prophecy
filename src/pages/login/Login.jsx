@@ -12,8 +12,19 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate = useNavigate();
 
-    const onSubmitForm = formData => {
-        navigate('connectWallet');
+    const onSubmitForm = async formData => {
+        // navigate('connectWallet');
+
+        console.log(formData);
+        const response = await fetch('http://localhost:8080/demo', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const res = await response.json();
+        console.log(res);
     };
 
     return (
