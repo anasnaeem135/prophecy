@@ -14,7 +14,11 @@ const CryptoLive = () => {
 
     return (
         <>
-            <Header />
+            <Header
+                button1={false}
+                button2={{ show: true, title: 'Sports Live' }}
+                button3={{ show: true, title: 'Logout' }}
+            />
             <div className={style.body}>
                 <CardSlider />
 

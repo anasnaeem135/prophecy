@@ -9,8 +9,8 @@ const Choose = () => {
     return (
         <>
             <Header
-                button1={{ show: true, title: 'Switch to Advertisor' }}
-                button2={{ show: false }}
+                button1={false}
+                button2={false}
                 button3={{ show: true, title: 'Logout' }}
             />
 

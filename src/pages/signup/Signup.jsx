@@ -28,7 +28,7 @@ const Signup = () => {
 
     return (
         <>
-            <Header button2={{ show: true, title: 'ok' }} button3={false} />
+            <Header button2={false} button3={false} />
 
             <div className={style.body}>
                 <div className={style.card}>

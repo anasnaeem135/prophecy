@@ -43,7 +43,11 @@ const ConnectWalltet = () => {
 
     return (
         <>
-            <Header home={false} aboutUs={false} />
+            <Header
+                button1={false}
+                button2={false}
+                button3={{ show: true, title: 'Logout' }}
+            />
 
             <div className={style.body}>
                 <div className={style.card}>

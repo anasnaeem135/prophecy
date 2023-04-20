@@ -13,10 +13,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const onSubmitForm = async formData => {
-        // navigate('connectWallet');
-
-        console.log(formData);
-        const response = await fetch('http://localhost:8080/demo', {
+        const response = await fetch('http://localhost:8080/login', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
@@ -24,7 +21,7 @@ const Login = () => {
             },
         });
         const res = await response.json();
-        console.log(res);
+        console.log('Response : ', res);
     };
 
     return (
