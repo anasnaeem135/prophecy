@@ -10,9 +10,15 @@ const RootStack = () => {
     return (
         <Routes>
             <Route path="/connectWallet" element={<ConnectWallet />} />
-            <Route path="/choose" element={<Choose />} />
-            <Route path="/cryptoLive" element={<CryptoLive />} />
-            <Route path="/sportsLive" element={<SportsLive />} />
+            <Route path="/connectWallet/choose" element={<Choose />} />
+            <Route
+                path="/connectWallet/choose/cryptoLive"
+                element={<CryptoLive />}
+            />
+            <Route
+                path="/connectWallet/choose/sportsLive"
+                element={<SportsLive />}
+            />
         </Routes>
     );
 };

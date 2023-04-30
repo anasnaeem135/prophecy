@@ -21,7 +21,12 @@ const Login = () => {
             },
         });
         const res = await response.json();
-        console.log('Response : ', res);
+
+        console.log('Response : ', response);
+
+        if (response.status === 200) {
+            navigate('/connectWallet', { replace: true });
+        }
     };
 
     return (

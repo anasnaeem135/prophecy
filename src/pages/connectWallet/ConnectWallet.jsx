@@ -5,20 +5,29 @@ import ProphecyLogo from 'images/icon.png';
 import CustomButton from 'components/button';
 import SendIcon from '@mui/icons-material/Send';
 
+import { useNavigate } from 'react-router-dom';
+
 const ConnectWalltet = () => {
     const [address, setAddress] = useState();
     const [disable, setDisable] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const navigate = useNavigate();
+
+    let account;
 
     useEffect(() => {
-        try {
-            connectMetamask().then(response => {
-                setAddress(response);
-                setDisable(true);
-                setShowButton(true);
-            });
-        } catch (error) {
-            console.error(error);
+        if (account) {
+            try {
+                connectMetamask().then(response => {
+                    setAddress(response);
+                    setDisable(true);
+                    setShowButton(true);
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            navigate('/connectWallet/choose', { replace: true });
         }
     }, []);
 
@@ -36,7 +45,7 @@ const ConnectWalltet = () => {
         const accounts = await window.ethereum.request({
             method: 'eth_requestAccounts',
         });
-        const account = accounts[0];
+        account = accounts[0];
 
         return account;
     }

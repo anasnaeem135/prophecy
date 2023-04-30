@@ -12,8 +12,7 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const onSubmitForm = async formData => {
-        console.log(formData);
-        const res = await fetch('http://localhost:8080/demo', {
+        const response = await fetch('http://localhost:8080/demo', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
@@ -21,7 +20,8 @@ const Signup = () => {
             },
         });
 
-        console.log(res);
+        const res = await response.json();
+        console.log('Result : ', res);
 
         navigate(-1);
     };
