@@ -7,7 +7,7 @@ import RootStack from './rootStack';
 const Routing = () => {
     return (
         <BrowserRouter>
-            <AuthStack />
+            {/* <AuthStack /> */}
             <RootStack />
         </BrowserRouter>
     );

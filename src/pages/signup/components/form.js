@@ -112,7 +112,9 @@ const Form = ({
                         <br></br>
 
                         <p className={style.warning}>
-                            {errors.email && touched.email && errors.email}
+                            {errors.phoneNo &&
+                                touched.phoneNo &&
+                                errors.phoneNo}
                         </p>
 
                         <br></br>

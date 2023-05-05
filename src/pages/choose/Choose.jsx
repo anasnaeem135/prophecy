@@ -29,7 +29,7 @@ const Choose = () => {
                     <CustomButton
                         title="Crypto Currency Live"
                         size="large"
-                        color="secondary"
+                        color="primary"
                         onClick={navigateToCryptoLive}
                     />
                     <p className={style.fontLink}>
@@ -45,7 +45,7 @@ const Choose = () => {
                     <CustomButton
                         title="Sports Prediction Live"
                         size="large"
-                        color="secondary"
+                        color="primary"
                         onClick={navigateToSportsLive}
                     />
                     <p className={style.fontLink}>

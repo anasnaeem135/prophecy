@@ -4,26 +4,26 @@ import ProphecyLogo from 'images/icon.png';
 import style from './Signup.module.css';
 
 import Form from './components/form';
-import Divider from 'components/divider/divider';
 import Header from 'components/header/header';
 import { useNavigate } from 'react-router-dom';
+
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+import { signupApi } from './helpers/api';
 
 const Signup = () => {
     const navigate = useNavigate();
 
     const onSubmitForm = async formData => {
-        const response = await fetch('http://localhost:8080/demo', {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        const response = await signupApi(formData);
 
-        const res = await response.json();
-        console.log('Result : ', res);
-
-        navigate(-1);
+        if (response?.status === 200) {
+            setTimeout(() => {
+                navigate('/', { replace: true });
+            }, 1500);
+        }
     };
 
     return (
@@ -34,11 +34,15 @@ const Signup = () => {
                 <div className={style.card}>
                     <img src={ProphecyLogo} alt="app logo" />
 
-                    <Divider />
-
                     <Form onSubmit={onSubmitForm} />
                 </div>
+
+                <div className={style.ellipse1}></div>
+
+                <div className={style.ellipse2}></div>
             </div>
+
+            <ToastContainer />
         </>
     );
 };

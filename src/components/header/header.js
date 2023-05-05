@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderLogo from 'images/logo-bg-white.png';
 import style from './header.module.css';
 import CustomButton from 'components/button';
@@ -12,11 +12,14 @@ const Header = ({
     onClick1,
     onClick2,
     onClick3,
+    width = '100%',
 }) => {
+    // const [width, setWidth] = useState('100%');
     const navigate = useNavigate();
 
     const handleClickLogin = () => {
         visible(true);
+        window.scrollTo(0, 0);
     };
 
     const handleClickHome = () => {
@@ -24,7 +27,7 @@ const Header = ({
     };
 
     return (
-        <div className={style.main}>
+        <div className={style.main} style={{ width: width }}>
             <img
                 src={HeaderLogo}
                 alt="Header Logo"

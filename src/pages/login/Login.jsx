@@ -4,38 +4,56 @@ import ProphecyLogo from 'images/icon.png';
 import style from './Login.module.css';
 
 import Form from './components/form';
-import Divider from 'components/divider/divider';
-import Header from 'components/header/header';
-
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from 'styles/theme';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+import { loginApi } from './helpers/api';
+import { ToastContainer, toast } from 'react-toastify';
+
+const Login = ({ visible }) => {
     const navigate = useNavigate();
 
+    const handleApi = async formData => {
+        await loginApi(formData);
+    };
     const onSubmitForm = async formData => {
-        const response = await fetch('http://localhost:8080/login', {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const res = await response.json();
+        toast
+            .promise(handleApi(formData), {
+                pending: 'Logging in...',
+                success: 'Logged in Successfully 👌',
+                error: 'Logging in Failed 🤯',
+            })
+            .then(
+                setTimeout(() => {
+                    navigate('/connectWallet', { replace: true });
+                }, 1500),
+            );
+    };
 
-        console.log('Response : ', response);
-
-        if (response.status === 200) {
-            navigate('/connectWallet', { replace: true });
-        }
+    const handleClickClose = () => {
+        visible(false);
     };
 
     return (
         <>
             <div className={style.card}>
+                <div className={style.closeButton}>
+                    <ThemeProvider theme={theme}>
+                        <IconButton onClick={handleClickClose}>
+                            <CloseIcon color="primary" />
+                        </IconButton>
+                    </ThemeProvider>
+                </div>
+
                 <img src={ProphecyLogo} alt="app logo" />
 
                 <Form onSubmit={onSubmitForm} />
             </div>
+
+            <ToastContainer />
         </>
     );
 };

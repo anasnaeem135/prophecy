@@ -16,15 +16,14 @@ const CryptoLive = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPrices = async () => {
-            const cryptocurrencies = ['BTC', 'ETH', 'LTC'];
-            const prices = await getCurrentPrices(cryptocurrencies);
-
-            console.log(prices);
-            setPrices(prices);
+        const onSubmitForm = async formData => {
+            console.log('Here');
+            const response = await fetch('http://localhost:8080/crypto');
+            const res = await response.json();
+            console.log('Response : ', res);
         };
 
-        fetchPrices();
+        onSubmitForm();
     }, []);
 
     const handleSubmit = v => {

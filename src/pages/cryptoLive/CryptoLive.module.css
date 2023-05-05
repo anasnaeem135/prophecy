@@ -1,6 +1,7 @@
 .body {
-    /* height: 700px; */
-    background: linear-gradient(
+    height: 700px;
+    padding-top: 100px;
+    /* background: linear-gradient(
         to bottom right,
         #ec7553,
         #f5903f,
@@ -11,7 +12,7 @@
         #e45c5c,
         #f18344,
         #dc5c5c
-    );
+    ); */
 }
 
 .img {
@@ -38,8 +39,10 @@
 
 .cardContainer {
     margin-inline-start: 37.5%;
+    color: #da2564;
     padding: 5px;
     background: white;
+    border-style: solid;
     border-radius: 25px;
     width: 25%;
 }

@@ -4,6 +4,10 @@ import style from './footer.module.css';
 import CustomButton from 'components/button';
 
 const Footer = () => {
+    const handleClickHome = () => {
+        window.scrollTo(0, 0);
+    };
+
     return (
         <div className={style.main}>
             <div className={style.group1}>
@@ -19,7 +23,12 @@ const Footer = () => {
 
             <div className={style.group2}>
                 <b className={style.title}>Prophecy Links</b>
-                <CustomButton title="Home" size="medium" color="secondary" />
+                <CustomButton
+                    title="Home"
+                    size="medium"
+                    color="secondary"
+                    onClick={handleClickHome}
+                />
                 <CustomButton
                     title="About Us"
                     size="medium"

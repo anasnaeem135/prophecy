@@ -4,7 +4,7 @@
     height: 625px;
     justify-content: space-evenly;
     display: flex;
-    background: linear-gradient(
+    /* background: linear-gradient(
         to bottom right,
         #ec7553,
         #f5903f,
@@ -15,10 +15,11 @@
         #e45c5c,
         #f18344,
         #dc5c5c
-    );
+    ); */
 }
 
 .divider {
+    margin-top: 100px;
     border: solid 5px;
     background: black;
     width: 5px;
@@ -29,7 +30,7 @@
 
 .view {
     width: 50%;
-    color: white;
+    color: #dc166c;
     padding-inline: 10px;
     text-align: center;
     font-size: 35px;
@@ -37,4 +38,6 @@
 
 .fontLink {
     font-family: 'Passion One', cursive;
+    font-size: larger;
+    padding-inline: 20px;
 }

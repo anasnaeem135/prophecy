@@ -4,40 +4,50 @@ import style from './ConnectWallet.module.css';
 import ProphecyLogo from 'images/icon.png';
 import CustomButton from 'components/button';
 import SendIcon from '@mui/icons-material/Send';
-
+import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const ConnectWalltet = () => {
     const [address, setAddress] = useState();
     const [disable, setDisable] = useState(false);
     const [showButton, setShowButton] = useState(false);
+
     const navigate = useNavigate();
 
-    let account;
+    useEffect(() => {
+        handleConnectButton();
+
+        // setTimeout(() => {
+        //     navigateToChoose();
+        // }, 1500);
+    }, []);
 
     useEffect(() => {
-        if (account) {
-            try {
-                connectMetamask().then(response => {
+        if (address) {
+            toast.success('MetaMask Connected Successfully', {
+                hideProgressBar: true,
+            });
+        }
+    }, [address]);
+
+    const navigateToChoose = () => {
+        navigate('/connectWallet/choose', { replace: true });
+    };
+
+    const handleConnectButton = () => {
+        console.log('checkpoint 1');
+        if (window.ethereum !== undefined) {
+            connectMetamask()
+                .then(response => {
                     setAddress(response);
                     setDisable(true);
                     setShowButton(true);
+                })
+                .catch(err => {
+                    toast.error('Error connecting to MetaMask');
                 });
-            } catch (error) {
-                console.error(error);
-            }
         } else {
-            navigate('/connectWallet/choose', { replace: true });
-        }
-    }, []);
-
-    const handleConnectButton = () => {
-        if (window !== undefined) {
-            connectMetamask().then(response => {
-                setAddress(response);
-                setDisable(true);
-                setShowButton(true);
-            });
+            toast.warn('Install the MetaMask extension to continue');
         }
     };
 
@@ -45,8 +55,7 @@ const ConnectWalltet = () => {
         const accounts = await window.ethereum.request({
             method: 'eth_requestAccounts',
         });
-        account = accounts[0];
-
+        const account = accounts[0];
         return account;
     }
 
@@ -86,11 +95,22 @@ const ConnectWalltet = () => {
 
                     {showButton ? (
                         <div className={style.nextBtn}>
-                            <CustomButton icon={<SendIcon />} title="Next" />
+                            <CustomButton
+                                size="large"
+                                icon={<SendIcon />}
+                                title="Next"
+                                onClick={navigateToChoose}
+                            />
                         </div>
                     ) : null}
                 </div>
+
+                <div className={style.ellipse1}></div>
+
+                <div className={style.ellipse2}></div>
             </div>
+
+            <ToastContainer />
         </>
     );
 };

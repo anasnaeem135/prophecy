@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     display: flex;
-    background: linear-gradient(
+    /* background: linear-gradient(
         to bottom right,
         #ec7553,
         #f5903f,
@@ -17,12 +17,14 @@
         #e45c5c,
         #f18344,
         #dc5c5c
-    );
+    ); */
+    background: #dc166c;
 }
 
 .logo {
     width: 90px;
     height: 90px;
+    /* padding: 10px; */
 }
 
 .title {
