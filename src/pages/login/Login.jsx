@@ -11,26 +11,21 @@ import { theme } from 'styles/theme';
 import { useNavigate } from 'react-router-dom';
 
 import { loginApi } from './helpers/api';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = ({ visible }) => {
     const navigate = useNavigate();
 
-    const handleApi = async formData => {
-        await loginApi(formData);
-    };
     const onSubmitForm = async formData => {
-        toast
-            .promise(handleApi(formData), {
-                pending: 'Logging in...',
-                success: 'Logged in Successfully 👌',
-                error: 'Logging in Failed 🤯',
-            })
-            .then(
-                setTimeout(() => {
-                    navigate('/connectWallet', { replace: true });
-                }, 1500),
-            );
+        const response = await loginApi(formData);
+
+        if (response?.status === 200) {
+            setTimeout(() => {
+                navigate('/connectWallet', { replace: true });
+            }, 1500);
+        }
     };
 
     const handleClickClose = () => {

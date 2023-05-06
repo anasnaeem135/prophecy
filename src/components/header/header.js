@@ -13,6 +13,7 @@ const Header = ({
     onClick2,
     onClick3,
     width = '100%',
+    position = 'fixed',
 }) => {
     // const [width, setWidth] = useState('100%');
     const navigate = useNavigate();
@@ -27,7 +28,9 @@ const Header = ({
     };
 
     return (
-        <div className={style.main} style={{ width: width }}>
+        <div
+            className={style.main}
+            style={{ width: width, position: position }}>
             <img
                 src={HeaderLogo}
                 alt="Header Logo"

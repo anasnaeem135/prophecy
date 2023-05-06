@@ -56,11 +56,11 @@ const Form = ({
 
                         <br></br>
 
-                        <p className={style.warning}>
+                        <small className={style.warning}>
                             {errors.firstName &&
                                 touched.firstName &&
                                 errors.firstName}
-                        </p>
+                        </small>
 
                         <br></br>
 
@@ -75,11 +75,11 @@ const Form = ({
 
                         <br></br>
 
-                        <p className={style.warning}>
+                        <small className={style.warning}>
                             {errors.lastName &&
                                 touched.lastName &&
                                 errors.lastName}
-                        </p>
+                        </small>
 
                         <br></br>
 
@@ -94,9 +94,9 @@ const Form = ({
 
                         <br></br>
 
-                        <p className={style.warning}>
+                        <small className={style.warning}>
                             {errors.email && touched.email && errors.email}
-                        </p>
+                        </small>
 
                         <br></br>
 
@@ -111,11 +111,11 @@ const Form = ({
 
                         <br></br>
 
-                        <p className={style.warning}>
+                        <small className={style.warning}>
                             {errors.phoneNo &&
                                 touched.phoneNo &&
                                 errors.phoneNo}
-                        </p>
+                        </small>
 
                         <br></br>
 
@@ -130,11 +130,11 @@ const Form = ({
 
                         <br></br>
 
-                        <p className={style.warning}>
+                        <small className={style.warning}>
                             {errors.password &&
                                 touched.password &&
                                 errors.password}
-                        </p>
+                        </small>
 
                         <br></br>
 
@@ -149,11 +149,11 @@ const Form = ({
 
                         <br></br>
 
-                        <p className={style.warning}>
+                        <small className={style.warning}>
                             {errors.confirmPassword &&
                                 touched.confirmPassword &&
                                 errors.confirmPassword}
-                        </p>
+                        </small>
 
                         <br></br>
 

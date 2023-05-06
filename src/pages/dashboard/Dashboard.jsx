@@ -16,15 +16,22 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+
+import User from 'images/user.png';
+
+import SportsCricketIcon from '@mui/icons-material/SportsCricket';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 
 import { theme } from 'styles/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import Header from 'components/header/header';
+
+import styles from './Dashboard.module.css';
 
 const drawerWidth = 240;
 
@@ -114,15 +121,18 @@ export default function MiniDrawer() {
                     position="fixed"
                     open={open}
                     color="primary"
-                    sx={{ width: 65, left: 0, backgroundColor: '#dc166c' }}>
-                    {/* <Toolbar> */}
+                    sx={{
+                        width: 65,
+                        left: 0,
+                        backgroundColor: '#dc166c',
+                        height: 65,
+                    }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
                         sx={{
-                            // marginRight: 5,
                             alignSelf: 'center',
                             ...(open && { display: 'none' }),
                         }}>
@@ -145,119 +155,163 @@ export default function MiniDrawer() {
                 <Divider />
 
                 <List>
-                    {[
-                        'Dashboard',
-                        'Crypto Currencies',
-                        'Cricket',
-                        'Football',
-                    ].map((text, index) => (
-                        <ListItem
-                            key={text}
-                            disablePadding
-                            sx={{ display: 'block' }}>
-                            <ListItemButton
+                    <ListItem disablePadding sx={{ display: 'block' }}>
+                        <ListItemButton
+                            onClick={() => alert('Currency clicked')}
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                            }}>
+                            <ListItemIcon
                                 sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
+                                    alignSelf: 'center',
+                                    minWidth: 0,
+                                    marginTop: 5,
+                                    marginBottom: 5,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                    color: '#dc166c',
                                 }}>
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                <AccountCircleIcon />
+                            </ListItemIcon>
 
-                                        color: '#dc166c',
-                                    }}>
-                                    {index % 2 === 0 ? (
-                                        <AccountCircleIcon />
-                                    ) : (
-                                        <CurrencyBitcoinIcon />
-                                    )}
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={text}
-                                    sx={{ opacity: open ? 1 : 0 }}
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
+                            <ListItemText
+                                primary="Dashboard"
+                                sx={{ opacity: open ? 1 : 0 }}
+                            />
+                        </ListItemButton>
+
+                        <ListItemButton>
+                            <ListItemIcon
+                                sx={{
+                                    alignSelf: 'center',
+                                    marginTop: 5,
+                                    marginBottom: 5,
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                    color: '#dc166c',
+                                }}>
+                                <CurrencyBitcoinIcon />
+                            </ListItemIcon>
+
+                            <ListItemText
+                                primary="Cryptocurrency"
+                                sx={{ opacity: open ? 1 : 0 }}
+                            />
+                        </ListItemButton>
+
+                        <ListItemButton>
+                            <ListItemIcon
+                                sx={{
+                                    alignSelf: 'center',
+                                    marginTop: 5,
+                                    marginBottom: 5,
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                    color: '#dc166c',
+                                }}>
+                                <SportsCricketIcon />
+                            </ListItemIcon>
+
+                            <ListItemText
+                                primary="Cricket"
+                                sx={{ opacity: open ? 1 : 0 }}
+                            />
+                        </ListItemButton>
+
+                        <ListItemButton>
+                            <ListItemIcon
+                                sx={{
+                                    alignSelf: 'center',
+                                    marginTop: 5,
+                                    marginBottom: 5,
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                    color: '#dc166c',
+                                }}>
+                                <SportsSoccerIcon />
+                            </ListItemIcon>
+
+                            <ListItemText
+                                primary="Football"
+                                sx={{ opacity: open ? 1 : 0 }}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                    {/* )} */}
                 </List>
-
-                {/* <Divider />
-
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem
-                            key={text}
-                            disablePadding
-                            sx={{ display: 'block' }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}>
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}>
-                                    {index % 2 === 0 ? (
-                                        <InboxIcon />
-                                    ) : (
-                                        <MailIcon />
-                                    )}
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={text}
-                                    sx={{ opacity: open ? 1 : 0 }}
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List> */}
             </Drawer>
 
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                {/* <DrawerHeader /> */}
+                <Header position="relative" />
 
-                <Header width="92%" />
+                <div
+                    style={{
+                        backgroundColor: '#D3D3D3',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 20,
+                    }}>
+                    <img
+                        src={User}
+                        alt="Avatar"
+                        className={styles.userAvatar}></img>
 
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla
-                    est ullamcorper eget nulla facilisi etiam dignissim diam.
-                    Pulvinar elementum integer enim neque volutpat ac tincidunt.
-                    Ornare suspendisse sed nisi lacus sed viverra tellus. Purus
-                    sit amet volutpat consequat mauris. Elementum eu facilisis
-                    sed odio morbi. Euismod lacinia at quis risus sed vulputate
-                    odio. Morbi tincidunt ornare massa eget egestas purus
-                    viverra accumsan in. In hendrerit gravida rutrum quisque non
-                    tellus orci ac. Pellentesque nec nam aliquam sem et tortor.
-                    Habitant morbi tristique senectus et. Adipiscing elit duis
-                    tristique sollicitudin nibh sit. Ornare aenean euismod
-                    elementum nisi quis eleifend. Commodo viverra maecenas
-                    accumsan lacus vel facilisis. Nulla posuere sollicitudin
-                    aliquam ultrices sagittis orci a.
-                </Typography>
+                    <div>
+                        <h2>Abeel Naeem</h2>
+                        <div
+                            style={{
+                                flexDirection: 'row',
+                                display: 'flex',
+                                gap: 20,
+                            }}>
+                            <div
+                                style={{
+                                    flexDirection: 'column',
+                                    display: 'flex',
+                                }}>
+                                <small>Account Address</small>
+
+                                <small>56151563153</small>
+                            </div>
+
+                            <div
+                                style={{
+                                    flexDirection: 'column',
+                                    display: 'flex',
+                                }}>
+                                <small>Email Address</small>
+
+                                <small>abeelnaeem@gmail.com</small>
+                            </div>
+
+                            <div
+                                style={{
+                                    flexDirection: 'column',
+                                    display: 'flex',
+                                }}>
+                                <small>Phone Number</small>
+
+                                <small>0324445561</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Balance </h2>
+
+                    <h2>258 PRC Tokens</h2>
+
+                    <small>
+                        This is the current amount of token you have in your
+                        MetaMask Wallet
+                    </small>
+                </div>
             </Box>
         </Box>
     );

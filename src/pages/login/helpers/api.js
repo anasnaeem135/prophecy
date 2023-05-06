@@ -9,12 +9,12 @@ export const loginApi = async data => {
             password: data.password,
         })
         .then(function (response) {
-            // toast.success(response?.data?.message, { hideProgressBar: true });
+            toast.success(response?.data?.message, { hideProgressBar: true });
             return response;
         })
         .catch(function (err) {
-            // toast.error(err?.message, { hideProgressBar: true });
-            return response;
+            toast.error(err?.message, { hideProgressBar: true });
+            return err;
         });
 
     return response;
