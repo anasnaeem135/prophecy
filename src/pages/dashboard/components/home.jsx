@@ -1,0 +1,85 @@
+import React from 'react';
+import User from 'images/user.png';
+import styles from '../Dashboard.module.css';
+
+const Home = () => {
+    return (
+        <>
+            <div
+                style={{
+                    backgroundColor: '#D3D3D3',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: 20,
+                    // marginInlineStart: 5,
+                }}>
+                <img
+                    src={User}
+                    alt="Avatar"
+                    className={styles.userAvatar}></img>
+
+                <div>
+                    <h2>Abeel Naeem</h2>
+                    <div
+                        style={{
+                            flexDirection: 'row',
+                            display: 'flex',
+                            gap: 20,
+                        }}>
+                        <div
+                            style={{
+                                flexDirection: 'column',
+                                display: 'flex',
+                            }}>
+                            <small>Account Address</small>
+
+                            <small>56151563153</small>
+                        </div>
+
+                        <div
+                            style={{
+                                flexDirection: 'column',
+                                display: 'flex',
+                            }}>
+                            <small>Email Address</small>
+
+                            <small>abeelnaeem@gmail.com</small>
+                        </div>
+
+                        <div
+                            style={{
+                                flexDirection: 'column',
+                                display: 'flex',
+                            }}>
+                            <small>Phone Number</small>
+
+                            <small>0324445561</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style={{ marginTop: 50 }}>
+                <h2>Balance </h2>
+
+                <h3>258 PRC Tokens</h3>
+
+                <small>
+                    This is the current amount of token you have in your
+                    MetaMask Wallet
+                </small>
+            </div>
+
+            <div style={{ marginTop: 50 }}>
+                <h2>Markets </h2>
+
+                <small>
+                    This is the current amount of token you have in your
+                    MetaMask Wallet nejndj
+                </small>
+            </div>
+        </>
+    );
+};
+
+export default Home;

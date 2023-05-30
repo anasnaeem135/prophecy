@@ -8,9 +8,6 @@ import Header from 'components/header/header';
 import { useNavigate } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
-
 import { signupApi } from './helpers/api';
 
 const Signup = () => {

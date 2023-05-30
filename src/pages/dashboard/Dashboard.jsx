@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -18,6 +18,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 import User from 'images/user.png';
+import Crypto from './components/crypto';
+import Cricket from './components/cricket';
 
 import SportsCricketIcon from '@mui/icons-material/SportsCricket';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
@@ -32,7 +34,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import Header from 'components/header/header';
 
 import styles from './Dashboard.module.css';
-
+import Home from './components/home';
 const drawerWidth = 240;
 
 const openedMixin = theme => ({
@@ -100,9 +102,30 @@ const Drawer = styled(MuiDrawer, {
     }),
 }));
 
-export default function MiniDrawer() {
+const Dashboard = () => {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [showHome, setShowHome] = useState(true);
+    const [showCrypto, setShowCrypto] = useState(false);
+    const [showCricket, setShowCricket] = useState(false);
+
+    const handleClickHome = () => {
+        setShowCricket(false);
+        setShowCrypto(false);
+        setShowHome(true);
+    };
+
+    const handleClickCrypto = () => {
+        setShowHome(false);
+        setShowCricket(false);
+        setShowCrypto(true);
+    };
+
+    const handleClickCricket = () => {
+        setShowCrypto(false);
+        setShowHome(false);
+        setShowCricket(true);
+    };
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -157,7 +180,7 @@ export default function MiniDrawer() {
                 <List>
                     <ListItem disablePadding sx={{ display: 'block' }}>
                         <ListItemButton
-                            onClick={() => alert('Currency clicked')}
+                            onClick={handleClickHome}
                             sx={{
                                 minHeight: 48,
                                 justifyContent: open ? 'initial' : 'center',
@@ -182,7 +205,7 @@ export default function MiniDrawer() {
                             />
                         </ListItemButton>
 
-                        <ListItemButton>
+                        <ListItemButton onClick={handleClickCrypto}>
                             <ListItemIcon
                                 sx={{
                                     alignSelf: 'center',
@@ -202,7 +225,7 @@ export default function MiniDrawer() {
                             />
                         </ListItemButton>
 
-                        <ListItemButton>
+                        <ListItemButton onClick={handleClickCricket}>
                             <ListItemIcon
                                 sx={{
                                     alignSelf: 'center',
@@ -242,77 +265,22 @@ export default function MiniDrawer() {
                             />
                         </ListItemButton>
                     </ListItem>
-                    {/* )} */}
                 </List>
             </Drawer>
 
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                <Header position="relative" />
-
-                <div
-                    style={{
-                        backgroundColor: '#D3D3D3',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        gap: 20,
-                    }}>
-                    <img
-                        src={User}
-                        alt="Avatar"
-                        className={styles.userAvatar}></img>
-
-                    <div>
-                        <h2>Abeel Naeem</h2>
-                        <div
-                            style={{
-                                flexDirection: 'row',
-                                display: 'flex',
-                                gap: 20,
-                            }}>
-                            <div
-                                style={{
-                                    flexDirection: 'column',
-                                    display: 'flex',
-                                }}>
-                                <small>Account Address</small>
-
-                                <small>56151563153</small>
-                            </div>
-
-                            <div
-                                style={{
-                                    flexDirection: 'column',
-                                    display: 'flex',
-                                }}>
-                                <small>Email Address</small>
-
-                                <small>abeelnaeem@gmail.com</small>
-                            </div>
-
-                            <div
-                                style={{
-                                    flexDirection: 'column',
-                                    display: 'flex',
-                                }}>
-                                <small>Phone Number</small>
-
-                                <small>0324445561</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h2>Balance </h2>
-
-                    <h2>258 PRC Tokens</h2>
-
-                    <small>
-                        This is the current amount of token you have in your
-                        MetaMask Wallet
-                    </small>
-                </div>
+                <Header
+                    position="relative"
+                    button1={false}
+                    button2={false}
+                    button3={{ show: true, title: 'Logout' }}
+                />
+                {showHome ? <Home /> : null}
+                {showCrypto ? <Crypto /> : null}
+                {showCricket ? <Cricket /> : null}
             </Box>
         </Box>
     );
-}
+};
+
+export default Dashboard;

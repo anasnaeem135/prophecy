@@ -16,10 +16,6 @@ const ConnectWalltet = () => {
 
     useEffect(() => {
         handleConnectButton();
-
-        // setTimeout(() => {
-        //     navigateToChoose();
-        // }, 1500);
     }, []);
 
     useEffect(() => {
@@ -31,11 +27,10 @@ const ConnectWalltet = () => {
     }, [address]);
 
     const navigateToChoose = () => {
-        navigate('/connectWallet/choose', { replace: true });
+        navigate('/dashboard', { replace: true });
     };
 
     const handleConnectButton = () => {
-        console.log('checkpoint 1');
         if (window.ethereum !== undefined) {
             connectMetamask()
                 .then(response => {

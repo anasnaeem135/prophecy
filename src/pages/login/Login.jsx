@@ -13,8 +13,6 @@ import { useNavigate } from 'react-router-dom';
 import { loginApi } from './helpers/api';
 import { ToastContainer } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
-
 const Login = ({ visible }) => {
     const navigate = useNavigate();
 
@@ -22,6 +20,9 @@ const Login = ({ visible }) => {
         const response = await loginApi(formData);
 
         if (response?.status === 200) {
+            if (formData.remember === true) {
+                localStorage.setItem('isLoggedIn', true);
+            }
             setTimeout(() => {
                 navigate('/connectWallet', { replace: true });
             }, 1500);
