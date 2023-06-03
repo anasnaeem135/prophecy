@@ -9,6 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from 'styles/theme';
 import { useNavigate } from 'react-router-dom';
+import useUserStore from 'stores/userStore';
 
 import { loginApi } from './helpers/api';
 import { ToastContainer } from 'react-toastify';
@@ -20,6 +21,7 @@ const Login = ({ visible }) => {
         const response = await loginApi(formData);
 
         if (response?.status === 200) {
+            useUserStore.setState({ user: response.data.user });
             if (formData.remember === true) {
                 localStorage.setItem('isLoggedIn', true);
             }

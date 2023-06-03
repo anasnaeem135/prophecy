@@ -6,12 +6,13 @@ import CustomButton from 'components/button';
 import SendIcon from '@mui/icons-material/Send';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import useUserStore from 'stores/userStore';
 
 const ConnectWalltet = () => {
     const [address, setAddress] = useState();
     const [disable, setDisable] = useState(false);
     const [showButton, setShowButton] = useState(false);
-
+    const user = useUserStore(state => state.user);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,6 +38,8 @@ const ConnectWalltet = () => {
                     setAddress(response);
                     setDisable(true);
                     setShowButton(true);
+                    user.accountAddress = response;
+                    useUserStore.setState({ user });
                 })
                 .catch(err => {
                     toast.error('Error connecting to MetaMask');

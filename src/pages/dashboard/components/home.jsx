@@ -2,7 +2,13 @@ import React from 'react';
 import User from 'images/user.png';
 import styles from '../Dashboard.module.css';
 
+import useUserStore from 'stores/userStore';
+
 const Home = () => {
+    const user = useUserStore(state => state.user);
+
+    console.log(user);
+
     return (
         <>
             <div
@@ -11,7 +17,6 @@ const Home = () => {
                     display: 'flex',
                     flexDirection: 'row',
                     gap: 20,
-                    // marginInlineStart: 5,
                 }}>
                 <img
                     src={User}
@@ -19,7 +24,9 @@ const Home = () => {
                     className={styles.userAvatar}></img>
 
                 <div>
-                    <h2>Abeel Naeem</h2>
+                    <h2>
+                        {user?.firstName} {user?.lastName}
+                    </h2>
                     <div
                         style={{
                             flexDirection: 'row',
@@ -33,7 +40,7 @@ const Home = () => {
                             }}>
                             <small>Account Address</small>
 
-                            <small>56151563153</small>
+                            <small>{user?.accountAddress}</small>
                         </div>
 
                         <div
@@ -43,7 +50,7 @@ const Home = () => {
                             }}>
                             <small>Email Address</small>
 
-                            <small>abeelnaeem@gmail.com</small>
+                            <small>{user?.email}</small>
                         </div>
 
                         <div
@@ -53,7 +60,7 @@ const Home = () => {
                             }}>
                             <small>Phone Number</small>
 
-                            <small>0324445561</small>
+                            <small>{user?.phoneNo}</small>
                         </div>
                     </div>
                 </div>
@@ -75,7 +82,7 @@ const Home = () => {
 
                 <small>
                     This is the current amount of token you have in your
-                    MetaMask Wallet nejndj
+                    MetaMask Wallet
                 </small>
             </div>
         </>

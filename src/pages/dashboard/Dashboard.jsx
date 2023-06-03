@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -17,13 +17,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-import User from 'images/user.png';
 import Crypto from './components/crypto';
 import Cricket from './components/cricket';
 
 import SportsCricketIcon from '@mui/icons-material/SportsCricket';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
@@ -33,8 +30,11 @@ import { theme } from 'styles/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import Header from 'components/header/header';
 
+import useUserStore from 'stores/userStore';
+
 import styles from './Dashboard.module.css';
 import Home from './components/home';
+import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 
 const openedMixin = theme => ({
@@ -103,6 +103,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const Dashboard = () => {
+    const navigate = useNavigate();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [showHome, setShowHome] = useState(true);
@@ -133,6 +134,11 @@ const Dashboard = () => {
 
     const handleDrawerClose = () => {
         setOpen(false);
+    };
+
+    const handleLogoutUser = () => {
+        useUserStore.setState({ user: null });
+        navigate('/', { replace: true });
     };
 
     return (
@@ -274,6 +280,7 @@ const Dashboard = () => {
                     button1={false}
                     button2={false}
                     button3={{ show: true, title: 'Logout' }}
+                    onClick3={handleLogoutUser}
                 />
                 {showHome ? <Home /> : null}
                 {showCrypto ? <Crypto /> : null}

@@ -11,9 +11,25 @@ import Loader from 'components/loader';
 import { cryptoApi } from '../helpers/api';
 import { ToastContainer } from 'react-toastify';
 
-const Card=()=>{
-    return <h1>Helo</h1>
-}
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import CloseIcon from '@mui/icons-material/Close';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from 'styles/theme';
+import { IconButton } from '@mui/material';
+
+import Typography from '@mui/material/Typography';
+
+const bull = (
+    <Box
+        component="span"
+        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}>
+        •
+    </Box>
+);
 
 const columns = [
     { id: 'name', label: 'Name', minWidth: 170 },
@@ -47,6 +63,7 @@ const Crypto = () => {
     const [ready, setReady] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [showCard, setShowCard] = useState(false);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         fetchCoinMarketCap();
@@ -97,8 +114,47 @@ const Crypto = () => {
         }
     }
 
-    const rowOnClickHandler = () => {
-        console.log('clicked');
+    const rowOnClickHandler = row => {
+        setData(row);
+        setShowCard(true);
+    };
+
+    const handleClickClose = () => {
+        setShowCard(false);
+    };
+
+    const BasicCard = ({ item }) => {
+        return (
+            <div
+                style={{
+                    padding: 5,
+                    marginTop: 5,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'absolute',
+                    left: '33%',
+                    borderStyle: 'solid',
+                    borderColor: ' #da2564',
+                    borderRadius: 20,
+                }}>
+                <h3 style={{ textAlign: 'center' }}>
+                    Available Pools for {item.name}
+                </h3>
+
+                <ThemeProvider theme={theme}>
+                    <IconButton
+                        onClick={handleClickClose}
+                        sx={{
+                            top: 0,
+                            right: 0,
+                            postion: 'absolute',
+                        }}>
+                        <CloseIcon color="primary" />
+                    </IconButton>
+                </ThemeProvider>
+            </div>
+        );
     };
 
     return (
@@ -130,10 +186,11 @@ const Crypto = () => {
                                     .map(row => {
                                         return (
                                             <TableRow
-                                                onClick={rowOnClickHandler}
+                                                onClick={() =>
+                                                    rowOnClickHandler(row)
+                                                }
                                                 hover
                                                 role="checkbox"
-                                                // selected
                                                 tabIndex={-1}
                                                 key={row.code}>
                                                 {columns.map(column => {
@@ -172,11 +229,12 @@ const Crypto = () => {
                         onRowsPerPageChange={handleChangeRowsPerPage}
                     />
                 </Paper>
-                // {<Card/>}
             ) : (
                 <Loader />
             )}
             <ToastContainer />
+
+            {showCard ? <BasicCard item={data} /> : null}
         </>
     );
 };

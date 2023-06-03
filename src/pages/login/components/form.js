@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
@@ -16,6 +16,20 @@ const Form = ({
     initialValues = { email: '', password: '', remember: false },
     onSubmit,
 }) => {
+    useEffect(() => {
+        const enterKeyListener = event => {
+            if (event.key === 'Enter') {
+                console.log('Enter pressed');
+            }
+        };
+
+        document.addEventListener('keydown', enterKeyListener);
+
+        return () => {
+            document.removeEventListener('keydown', enterKeyListener);
+        };
+    }, []);
+
     const [formInitialValues] = useState(initialValues);
 
     const handleOnClick = d => {
