@@ -155,6 +155,7 @@ const Home = () => {
                                 <CustomButton
                                     title="Refresh"
                                     icon={<RefreshIcon />}
+                                    onClick={getCurrentBalance}
                                     size="small"
                                 />
                             </ThemeProvider>
