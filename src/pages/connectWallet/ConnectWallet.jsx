@@ -15,9 +15,9 @@ const ConnectWalltet = () => {
     const user = useUserStore(state => state.user);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        handleConnectButton();
-    }, []);
+    // useEffect(() => {
+    //     handleConnectButton();
+    // }, []);
 
     useEffect(() => {
         if (address) {
@@ -40,6 +40,7 @@ const ConnectWalltet = () => {
                     setShowButton(true);
                     user.accountAddress = response;
                     useUserStore.setState({ user });
+                    console.log('User Store : ', user);
                 })
                 .catch(err => {
                     toast.error('Error connecting to MetaMask');
@@ -53,6 +54,7 @@ const ConnectWalltet = () => {
         const accounts = await window.ethereum.request({
             method: 'eth_requestAccounts',
         });
+
         const account = accounts[0];
         return account;
     }

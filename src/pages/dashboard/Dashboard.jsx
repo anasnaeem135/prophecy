@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,25 +15,20 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-
-import Crypto from './components/crypto';
-import Cricket from './components/cricket';
-
 import SportsCricketIcon from '@mui/icons-material/SportsCricket';
-
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-
-import { theme } from 'styles/theme';
 import { ThemeProvider } from '@mui/material/styles';
-import Header from 'components/header/header';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
+import Home from './components/home';
+import Crypto from './components/crypto';
+import Cricket from './components/cricket';
+import Header from 'components/header/header';
 import useUserStore from 'stores/userStore';
 
-import styles from './Dashboard.module.css';
-import Home from './components/home';
-import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 
 const openedMixin = theme => ({
@@ -286,6 +280,7 @@ const Dashboard = () => {
                 {showCrypto ? <Crypto /> : null}
                 {showCricket ? <Cricket /> : null}
             </Box>
+            <ToastContainer />
         </Box>
     );
 };

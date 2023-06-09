@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from 'components/header/header';
 
-import { useNavigate } from 'react-router-dom';
 import Footer from 'components/footer/footer';
 import Login from 'pages/login/Login';
 import style from './LandingPage.module.css';
 
 import FlowDiagram from 'images/flow-diagram.png';
 import Graph from 'images/cube.png';
+import { ethers } from 'ethers';
+import Web3 from 'web3';
 
 const LandingPage = () => {
     const [showLogin, setShowLogin] = useState(false);
+
+    const provider = new ethers.providers.JsonRpcProvider(
+        'HTTP://127.0.0.1:7545',
+    );
 
     return (
         <>

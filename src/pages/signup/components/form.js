@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import style from '../Signup.module.css';
-
 import { Formik } from 'formik';
+import SendIcon from '@mui/icons-material/Send';
+
+import style from '../Signup.module.css';
 import { signupValidationSchema } from '../helpers/validationSchema';
 import CustomButton from 'components/button';
 
-import SendIcon from '@mui/icons-material/Send';
 const Form = ({
     initialValues = {
         firstName: '',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Formik } from 'formik';
+import { Formik, useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
 import { loginValidationSchema } from '../helpers/validationSchema';
@@ -16,19 +16,22 @@ const Form = ({
     initialValues = { email: '', password: '', remember: false },
     onSubmit,
 }) => {
-    useEffect(() => {
-        const enterKeyListener = event => {
-            if (event.key === 'Enter') {
-                console.log('Enter pressed');
-            }
-        };
+    // const ok = useFormik();
 
-        document.addEventListener('keydown', enterKeyListener);
+    // useEffect(() => {
+    //     const enterKeyListener = event => {
+    //         if (event.key === 'Enter') {
+    //             console.log('Enter pressed');
+    //             // ok.handleSubmit();
+    //         }
+    //     };
 
-        return () => {
-            document.removeEventListener('keydown', enterKeyListener);
-        };
-    }, []);
+    //     document.addEventListener('keydown', enterKeyListener);
+
+    //     return () => {
+    //         document.removeEventListener('keydown', enterKeyListener);
+    //     };
+    // }, []);
 
     const [formInitialValues] = useState(initialValues);
 
