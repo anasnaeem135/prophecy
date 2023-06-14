@@ -23,7 +23,7 @@ const Login = ({ visible }) => {
         if (response?.status === 200) {
             useUserStore.setState({ user: response.data.user });
             if (formData.remember === true) {
-                localStorage.setItem('isLoggedIn', true);
+                localStorage.setItem('isLoggedIn', formData);
             }
             setTimeout(() => {
                 navigate('/connectWallet', { replace: true });

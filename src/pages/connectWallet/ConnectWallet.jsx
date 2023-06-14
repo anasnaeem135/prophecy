@@ -40,7 +40,6 @@ const ConnectWalltet = () => {
                     setShowButton(true);
                     user.accountAddress = response;
                     useUserStore.setState({ user });
-                    console.log('User Store : ', user);
                 })
                 .catch(err => {
                     toast.error('Error connecting to MetaMask');

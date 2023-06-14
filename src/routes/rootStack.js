@@ -1,13 +1,32 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
-import LandingPage from 'pages/landingPage/LandingPage';
 import Signup from 'pages/signup/Signup';
-
-import ConnectWallet from 'pages/connectWallet/ConnectWallet';
 import Dashboard from 'pages/dashboard/Dashboard';
+import LandingPage from 'pages/landingPage/LandingPage';
+import ConnectWallet from 'pages/connectWallet/ConnectWallet';
+
+import { loginApi } from 'pages/login/helpers/api';
 
 const RootStack = () => {
+    // const navigate = useNavigate();
+    // useEffect(() => {
+    //     const data = localStorage.getItem('isLoggedIn');
+    //     loginApiHandler(data);
+    // }, []);
+
+    // const loginApiHandler = async data => {
+    //     const response = await loginApi(data);
+
+    //     console.log('Response ', response);
+
+    //     if (response?.status === 200) {
+    //         setTimeout(() => {
+    //             navigate('/connectWallet', { replace: true });
+    //         }, 1500);
+    //     }
+    // };
+
     return (
         <Routes>
             <Route path="/" element={<LandingPage />} />

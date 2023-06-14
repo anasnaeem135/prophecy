@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { transferValidationSchema } from '../helpers/validationSchema';
-import { ThemeProvider } from '@mui/material/styles';
 import SendIcon from '@mui/icons-material/Send';
 
-import FormControlLabel from '@mui/material/FormControlLabel';
 import CustomButton from 'components/button';
-import { theme } from 'styles/theme';
 
 import style from 'pages/login/Login.module.css';
 

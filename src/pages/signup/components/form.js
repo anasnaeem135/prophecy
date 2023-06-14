@@ -4,8 +4,8 @@ import { Formik } from 'formik';
 import SendIcon from '@mui/icons-material/Send';
 
 import style from '../Signup.module.css';
-import { signupValidationSchema } from '../helpers/validationSchema';
 import CustomButton from 'components/button';
+import { signupValidationSchema } from '../helpers/validationSchema';
 
 const Form = ({
     initialValues = {
