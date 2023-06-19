@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HeaderLogo from 'images/logo-bg-white.png';
 import style from './header.module.css';
 import CustomButton from 'components/button';

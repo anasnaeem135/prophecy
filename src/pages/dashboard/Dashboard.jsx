@@ -19,6 +19,7 @@ import SportsCricketIcon from '@mui/icons-material/SportsCricket';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import FeaturedVideoIcon from '@mui/icons-material/FeaturedVideo';
 import { ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -28,6 +29,8 @@ import Crypto from './components/crypto';
 import Cricket from './components/cricket';
 import Header from 'components/header/header';
 import useUserStore from 'stores/userStore';
+
+import style from './Dashboard.module.css';
 
 const drawerWidth = 240;
 
@@ -177,7 +180,10 @@ const Dashboard = () => {
 
                 <Divider />
 
-                <List>
+                <List
+                    sx={{
+                        scrollbarWidth: 0,
+                    }}>
                     <ListItem disablePadding sx={{ display: 'block' }}>
                         <ListItemButton
                             onClick={handleClickHome}
@@ -261,6 +267,26 @@ const Dashboard = () => {
 
                             <ListItemText
                                 primary="Football"
+                                sx={{ opacity: open ? 1 : 0 }}
+                            />
+                        </ListItemButton>
+
+                        <ListItemButton>
+                            <ListItemIcon
+                                sx={{
+                                    alignSelf: 'center',
+                                    marginTop: 5,
+                                    marginBottom: 5,
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                    color: '#dc166c',
+                                }}>
+                                <FeaturedVideoIcon />
+                            </ListItemIcon>
+
+                            <ListItemText
+                                primary="Advertisment"
                                 sx={{ opacity: open ? 1 : 0 }}
                             />
                         </ListItemButton>

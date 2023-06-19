@@ -17,7 +17,7 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-const web3 = new Web3(window.etherium);
+// const web3 = new Web3(window.etherium);+
 const signer = provider.getSigner();
 const contractAddress = '0x28d730206EDaDC364B0dd15696765EBd703C35e7';
 const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
@@ -38,8 +38,11 @@ const Home = () => {
 
             const hex = userBalance?._hex;
 
-            const amount = web3.utils.hexToBytes(hex);
-            setBalance(amount[0]);
+            const amount = parseInt(hex);
+            // console.log('Temp : ', temp);
+
+            // const amount = web3.utils.hexToBytes(hex);
+            setBalance(amount);
 
             await getTokenName();
 
@@ -69,6 +72,7 @@ const Home = () => {
 
     const onSubmitForm = async formData => {
         const { recieverAdd, amount } = formData;
+
         try {
             const sendPrc = await contract.transfer(recieverAdd, amount);
 
