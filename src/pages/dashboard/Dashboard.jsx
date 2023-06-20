@@ -21,6 +21,7 @@ import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import FeaturedVideoIcon from '@mui/icons-material/FeaturedVideo';
 import { ThemeProvider } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
@@ -29,10 +30,20 @@ import Crypto from './components/crypto';
 import Cricket from './components/cricket';
 import Header from 'components/header/header';
 import useUserStore from 'stores/userStore';
+import Advertisment from './components/advertisment';
 
 import style from './Dashboard.module.css';
 
 const drawerWidth = 240;
+
+const useStyles = makeStyles(theme => ({
+    hiddenScroll: {
+        overflow: 'hidden',
+        scrollbarWidth: 'none',
+        // scrollbarWidth: 0,
+        overflowY: 'scroll',
+    },
+}));
 
 const openedMixin = theme => ({
     width: drawerWidth,
@@ -106,23 +117,34 @@ const Dashboard = () => {
     const [showHome, setShowHome] = useState(true);
     const [showCrypto, setShowCrypto] = useState(false);
     const [showCricket, setShowCricket] = useState(false);
+    const [showAdvertisment, setShowAdvertisment] = useState(false);
 
     const handleClickHome = () => {
+        setShowHome(true);
         setShowCricket(false);
         setShowCrypto(false);
-        setShowHome(true);
+        setShowAdvertisment(false);
     };
 
     const handleClickCrypto = () => {
+        setShowCrypto(true);
         setShowHome(false);
         setShowCricket(false);
-        setShowCrypto(true);
+        setShowAdvertisment(false);
     };
 
     const handleClickCricket = () => {
         setShowCrypto(false);
         setShowHome(false);
         setShowCricket(true);
+        setShowAdvertisment(false);
+    };
+
+    const handleClickAdvertisment = () => {
+        setShowCrypto(false);
+        setShowHome(false);
+        setShowCricket(false);
+        setShowAdvertisment(true);
     };
 
     const handleDrawerOpen = () => {
@@ -137,6 +159,7 @@ const Dashboard = () => {
         useUserStore.setState({ user: null });
         navigate('/', { replace: true });
     };
+    const classes = useStyles();
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -180,11 +203,13 @@ const Dashboard = () => {
 
                 <Divider />
 
-                <List
-                    sx={{
-                        scrollbarWidth: 0,
-                    }}>
-                    <ListItem disablePadding sx={{ display: 'block' }}>
+                <List className={classes.hiddenScroll}>
+                    <ListItem
+                        disablePadding
+                        sx={{
+                            display: 'block',
+                            justifyContent: 'space-evenly',
+                        }}>
                         <ListItemButton
                             onClick={handleClickHome}
                             sx={{
@@ -271,7 +296,7 @@ const Dashboard = () => {
                             />
                         </ListItemButton>
 
-                        <ListItemButton>
+                        <ListItemButton onClick={handleClickAdvertisment}>
                             <ListItemIcon
                                 sx={{
                                     alignSelf: 'center',
@@ -305,6 +330,7 @@ const Dashboard = () => {
                 {showHome ? <Home /> : null}
                 {showCrypto ? <Crypto /> : null}
                 {showCricket ? <Cricket /> : null}
+                {showAdvertisment ? <Advertisment /> : null}
             </Box>
             <ToastContainer />
         </Box>

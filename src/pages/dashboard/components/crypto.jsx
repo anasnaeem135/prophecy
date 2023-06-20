@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import Loader from 'components/loader';
-import { cryptoApi } from '../helpers/api';
-import { ToastContainer } from 'react-toastify';
 
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import CloseIcon from '@mui/icons-material/Close';
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from 'styles/theme';
-import { IconButton } from '@mui/material';
+import Fade from '@mui/material/Fade';
+import Loader from 'components/loader';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import Modal from '@mui/material/Modal';
+import Backdrop from '@mui/material/Backdrop';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import { ToastContainer } from 'react-toastify';
+import TableHead from '@mui/material/TableHead';
+import TableContainer from '@mui/material/TableContainer';
+import TablePagination from '@mui/material/TablePagination';
 
-import Typography from '@mui/material/Typography';
+import Form from './cryptoForm';
+import { cryptoApi } from '../helpers/api';
 
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}>
-        •
-    </Box>
-);
+import style from './crypto.module.css';
+
+const styleModal = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #da2564',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: 10,
+};
 
 const columns = [
     { id: 'name', label: 'Name', minWidth: 170 },
@@ -78,6 +80,10 @@ const Crypto = () => {
         setPage(0);
     };
 
+    const onSubmitForm = async values => {
+        console.log('Values : ', values);
+    };
+
     async function fetchCoinMarketCap() {
         const response = await cryptoApi();
         if (response?.status === 200) {
@@ -119,41 +125,34 @@ const Crypto = () => {
         setShowCard(true);
     };
 
-    const handleClickClose = () => {
-        setShowCard(false);
-    };
-
     const BasicCard = ({ item }) => {
-        return (
-            <div
-                style={{
-                    padding: 5,
-                    marginTop: 5,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    left: '33%',
-                    borderStyle: 'solid',
-                    borderColor: ' #da2564',
-                    borderRadius: 20,
-                }}>
-                <h3 style={{ textAlign: 'center' }}>
-                    Available Pools for {item.name}
-                </h3>
+        const handleClose = () => {
+            setShowCard(false);
+        };
 
-                <ThemeProvider theme={theme}>
-                    <IconButton
-                        onClick={handleClickClose}
-                        sx={{
-                            top: 0,
-                            right: 0,
-                            postion: 'absolute',
-                        }}>
-                        <CloseIcon color="primary" />
-                    </IconButton>
-                </ThemeProvider>
-            </div>
+        return (
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={showCard}
+                onClose={handleClose}
+                closeAfterTransition
+                slots={{ backdrop: Backdrop }}
+                slotProps={{
+                    backdrop: {
+                        timeout: 500,
+                    },
+                }}>
+                <Fade in={showCard}>
+                    <Box sx={styleModal}>
+                        <h3 className={style.title1}>
+                            Join pool for {item.name}
+                        </h3>
+
+                        <Form onSubmit={onSubmitForm} />
+                    </Box>
+                </Fade>
+            </Modal>
         );
     };
 
@@ -234,7 +233,9 @@ const Crypto = () => {
             )}
             <ToastContainer />
 
-            {showCard ? <BasicCard item={data} /> : null}
+            {showCard ? (
+                <BasicCard item={data} setShowCard={setShowCard} />
+            ) : null}
         </>
     );
 };

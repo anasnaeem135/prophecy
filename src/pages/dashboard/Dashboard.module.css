@@ -4,7 +4,7 @@
     align-self: center;
     margin-inline-start: 10px;
 }
-.root::-webkit-scrollbar {
+root::-webkit-scrollbar {
     display: none !important;
 }
 
