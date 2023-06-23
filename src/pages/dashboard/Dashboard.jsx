@@ -1,47 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import SportsCricketIcon from '@mui/icons-material/SportsCricket';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
-import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import FeaturedVideoIcon from '@mui/icons-material/FeaturedVideo';
-import { ThemeProvider } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import MuiAppBar from '@mui/material/AppBar';
+import MuiDrawer from '@mui/material/Drawer';
+import ListItem from '@mui/material/ListItem';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import { styled, useTheme } from '@mui/material/styles';
+import ListItemButton from '@mui/material/ListItemButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import SportsCricketIcon from '@mui/icons-material/SportsCricket';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FeaturedVideoIcon from '@mui/icons-material/FeaturedVideo';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 
-import Home from './components/home';
-import Crypto from './components/crypto';
-import Cricket from './components/cricket';
-import Header from 'components/header/header';
+import Home from './components/home/home';
+import Crypto from './components/crypto/crypto';
+import Cricket from './components/cricket/cricket';
 import useUserStore from 'stores/userStore';
-import Advertisment from './components/advertisment';
-
-import style from './Dashboard.module.css';
+import Header from 'components/header/header';
+import Advertisment from './components/advertisment/advertisment';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     hiddenScroll: {
-        overflow: 'hidden',
-        scrollbarWidth: 'none',
-        // scrollbarWidth: 0,
-        overflowY: 'scroll',
+        overflowX: 'hidden',
+        overflow: 'auto',
+        '&::-webkit-scrollbar': {
+            width: '0.4em',
+            background: 'transparent',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: 'transparent',
+        },
     },
 }));
 
@@ -159,6 +162,7 @@ const Dashboard = () => {
         useUserStore.setState({ user: null });
         navigate('/', { replace: true });
     };
+
     const classes = useStyles();
 
     return (

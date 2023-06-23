@@ -2,7 +2,6 @@ export const convertCricketFixture = arr => {
     try {
         let retArr = [];
         arr?.map(item => {
-            // console.log('Item : ', item.home.name);
             let obj = {
                 venue: item?.venue,
                 date: item?.date,

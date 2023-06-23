@@ -2,30 +2,31 @@ import React, { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
-import Loader from 'components/loader';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
 import Modal from '@mui/material/Modal';
+import Table from '@mui/material/Table';
+import Paper from '@mui/material/Paper';
 import Backdrop from '@mui/material/Backdrop';
 import TableRow from '@mui/material/TableRow';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import { ToastContainer } from 'react-toastify';
 import TableHead from '@mui/material/TableHead';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
-import Form from './cryptoForm';
-import { cryptoApi } from '../helpers/api';
+import Loader from 'components/loader';
+import { footBallApi } from '../helpers/api';
+import { convertCricketFixture } from '../helpers/convertResults';
 
 import style from './crypto.module.css';
+
+import Form from './cricket/components/cricketForm';
 
 const styleModal = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 600,
     bgcolor: 'background.paper',
     border: '2px solid #da2564',
     boxShadow: 24,
@@ -34,41 +35,27 @@ const styleModal = {
 };
 
 const columns = [
-    { id: 'name', label: 'Name', minWidth: 170 },
-    { id: 'symbol', label: 'Symbol', minWidth: 100 },
+    { id: 'venue', label: 'Venue', minWidth: 170 },
+    { id: 'date', label: 'Date', minWidth: 100 },
     {
-        id: 'price',
-        label: 'Price (USD)',
+        id: 'title',
+        label: 'Title',
         minWidth: 170,
         align: 'right',
         format: value => value.toLocaleString('en-US'),
     },
-
-    {
-        id: 'change',
-        label: '24H Change',
-        minWidth: 170,
-        align: 'right',
-        format: value => value.toFixed(2),
-    },
 ];
 
-function createData(name, symbol, price, change) {
-    return { name, symbol, price, change };
-}
-
-const Crypto = () => {
-    let temp = [];
-
+const Football = () => {
     const [page, setPage] = useState(0);
     const [row, setRow] = useState([{}]);
-    const [ready, setReady] = useState(false);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
-    const [showCard, setShowCard] = useState(false);
     const [data, setData] = useState(null);
+    const [ready, setReady] = useState(false);
+    const [showCard, setShowCard] = useState(false);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     useEffect(() => {
-        fetchCoinMarketCap();
+        fetchCricket();
     }, []);
 
     const handleChangePage = (event, newPage) => {
@@ -80,42 +67,12 @@ const Crypto = () => {
         setPage(0);
     };
 
-    const onSubmitForm = async values => {
-        console.log('Values : ', values);
-    };
-
-    async function fetchCoinMarketCap() {
-        const response = await cryptoApi();
+    async function fetchCricket() {
+        const response = await footBallApi();
         if (response?.status === 200) {
-            const { BTC, SOL, DOGE, DOT } = response?.data;
-            temp.push(
-                createData(
-                    BTC[0].name,
-                    BTC[0].symbol,
-                    BTC[0].quote.USD.price,
-                    BTC[0].quote.USD.percent_change_24h,
-                ),
-                createData(
-                    SOL[0].name,
-                    SOL[0].symbol,
-                    SOL[0].quote.USD.price,
-                    SOL[0].quote.USD.percent_change_24h,
-                ),
-                createData(
-                    DOGE[0].name,
-                    DOGE[0].symbol,
-                    DOGE[0].quote.USD.price,
-                    DOGE[0].quote.USD.percent_change_24h,
-                ),
-                createData(
-                    DOT[0].name,
-                    DOT[0].symbol,
-                    DOT[0].quote.USD.price,
-                    DOT[0].quote.USD.percent_change_24h,
-                ),
-            );
+            const { results } = response?.data;
 
-            setRow(...[temp]);
+            setRow(convertCricketFixture(results));
             setReady(true);
         }
     }
@@ -123,6 +80,10 @@ const Crypto = () => {
     const rowOnClickHandler = row => {
         setData(row);
         setShowCard(true);
+    };
+
+    const onSubmitForm = async values => {
+        console.log('Values : ', values);
     };
 
     const BasicCard = ({ item }) => {
@@ -145,11 +106,13 @@ const Crypto = () => {
                 }}>
                 <Fade in={showCard}>
                     <Box sx={styleModal}>
-                        <h3 className={style.title1}>
-                            Join pool for {item.name}
-                        </h3>
+                        <h3 className={style.title1}>{item.title}</h3>
 
-                        <Form onSubmit={onSubmitForm} />
+                        <Form
+                            onSubmit={onSubmitForm}
+                            home={item.home}
+                            away={item.away}
+                        />
                     </Box>
                 </Fade>
             </Modal>
@@ -185,11 +148,11 @@ const Crypto = () => {
                                     .map(row => {
                                         return (
                                             <TableRow
+                                                hover
+                                                role="checkbox"
                                                 onClick={() =>
                                                     rowOnClickHandler(row)
                                                 }
-                                                hover
-                                                role="checkbox"
                                                 tabIndex={-1}
                                                 key={row.code}>
                                                 {columns.map(column => {
@@ -231,8 +194,6 @@ const Crypto = () => {
             ) : (
                 <Loader />
             )}
-            <ToastContainer />
-
             {showCard ? (
                 <BasicCard item={data} setShowCard={setShowCard} />
             ) : null}
@@ -240,4 +201,4 @@ const Crypto = () => {
     );
 };
 
-export default Crypto;
+export default Football;

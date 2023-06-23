@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { Formik } from 'formik';
-import LoginIcon from '@mui/icons-material/Login';
 import { FileUploader } from 'react-drag-drop-files';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
@@ -17,11 +16,6 @@ const Form = ({ initialValues = { amount: '', file: null }, onSubmit }) => {
 
     const handleOnClick = d => {
         onSubmit(d);
-    };
-
-    const [files, setFile] = useState(null);
-    const handleChange = file => {
-        setFile(file);
     };
 
     return (
@@ -47,8 +41,6 @@ const Form = ({ initialValues = { amount: '', file: null }, onSubmit }) => {
                 const setFieldValueFile = v => {
                     setFieldValue('file', v);
                 };
-
-                console.log(errors);
 
                 return (
                     <div
@@ -78,6 +70,8 @@ const Form = ({ initialValues = { amount: '', file: null }, onSubmit }) => {
                                     {errors.file && touched.file && errors.file}
                                 </p>
 
+                                <br></br>
+
                                 <input
                                     className={style.inputFields}
                                     type="number"
@@ -93,12 +87,14 @@ const Form = ({ initialValues = { amount: '', file: null }, onSubmit }) => {
                                         touched.amount &&
                                         errors.amount}
                                 </p>
+
                                 <br></br>
                             </div>
                         </div>
+
                         <CustomButton
                             size="large"
-                            title="Enter"
+                            title="Upload"
                             icon={<FileUploadIcon />}
                             onClick={handleSubmit}
                         />

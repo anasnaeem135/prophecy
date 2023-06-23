@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+
 import { Formik } from 'formik';
-import { transferValidationSchema } from '../helpers/validationSchema';
 import SendIcon from '@mui/icons-material/Send';
 
 import CustomButton from 'components/button';
+import { transferValidationSchema } from '../helpers/validationSchema';
 
 import style from 'pages/login/Login.module.css';
 

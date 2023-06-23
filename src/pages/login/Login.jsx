@@ -1,18 +1,18 @@
 import React from 'react';
 
-import ProphecyLogo from 'images/icon.png';
-import style from './Login.module.css';
-
 import Form from './components/form';
 import { IconButton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import CloseIcon from '@mui/icons-material/Close';
 import { ThemeProvider } from '@mui/material/styles';
+
 import { theme } from 'styles/theme';
-import { useNavigate } from 'react-router-dom';
+import { loginApi } from './helpers/api';
 import useUserStore from 'stores/userStore';
 
-import { loginApi } from './helpers/api';
-import { ToastContainer } from 'react-toastify';
+import style from './Login.module.css';
+import ProphecyLogo from 'images/icon.png';
 
 const Login = ({ visible }) => {
     const navigate = useNavigate();
@@ -23,7 +23,8 @@ const Login = ({ visible }) => {
         if (response?.status === 200) {
             useUserStore.setState({ user: response.data.user });
             if (formData.remember === true) {
-                localStorage.setItem('isLoggedIn', formData);
+                const data = JSON.stringify(formData);
+                localStorage.setItem('isLoggedIn', data);
             }
             setTimeout(() => {
                 navigate('/connectWallet', { replace: true });

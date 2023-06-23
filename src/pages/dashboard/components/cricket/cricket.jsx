@@ -14,12 +14,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
 import Loader from 'components/loader';
-import { cricketApi } from '../helpers/api';
-import { convertCricketFixture } from '../helpers/convertResults';
+import { cricketApi } from './helpers/api';
+import Form from './components/cricketForm';
+import { convertCricketFixture } from './helpers/convertResults';
 
-import style from './crypto.module.css';
-
-import Form from './cricketForm';
+import style from './cricket.module.css';
 
 const styleModal = {
     position: 'absolute',
@@ -71,10 +70,9 @@ const Cricket = () => {
         const response = await cricketApi();
         if (response?.status === 200) {
             const { results } = response?.data;
-
             setRow(convertCricketFixture(results));
-            setReady(true);
         }
+        setReady(true);
     }
 
     const rowOnClickHandler = row => {

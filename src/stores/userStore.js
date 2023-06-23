@@ -9,7 +9,7 @@ const useUserStore = create(
         }),
         {
             name: 'userStore',
-            storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+            storage: createJSONStorage(() => sessionStorage),
         },
     ),
 );
