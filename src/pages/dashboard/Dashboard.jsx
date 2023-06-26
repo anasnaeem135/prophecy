@@ -45,6 +45,8 @@ const useStyles = makeStyles(theme => ({
         '&::-webkit-scrollbar-thumb': {
             background: 'transparent',
         },
+        display: 'flex',
+        flex: 1,
     },
 }));
 
@@ -212,7 +214,8 @@ const Dashboard = () => {
                         disablePadding
                         sx={{
                             display: 'block',
-                            justifyContent: 'space-evenly',
+                            flexDirection: 'column',
+                            alignContent: 'space-evenly',
                         }}>
                         <ListItemButton
                             onClick={handleClickHome}
@@ -220,15 +223,14 @@ const Dashboard = () => {
                                 minHeight: 48,
                                 justifyContent: open ? 'initial' : 'center',
                                 px: 2.5,
+                                height: '20%',
                             }}>
                             <ListItemIcon
                                 sx={{
                                     alignSelf: 'center',
-                                    minWidth: 0,
-                                    marginTop: 5,
-                                    marginBottom: 5,
-                                    mr: open ? 3 : 'auto',
                                     justifyContent: 'center',
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
                                     color: '#dc166c',
                                 }}>
                                 <AccountCircleIcon />
@@ -240,15 +242,19 @@ const Dashboard = () => {
                             />
                         </ListItemButton>
 
-                        <ListItemButton onClick={handleClickCrypto}>
+                        <ListItemButton
+                            onClick={handleClickCrypto}
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                                height: '20%',
+                            }}>
                             <ListItemIcon
                                 sx={{
                                     alignSelf: 'center',
-                                    marginTop: 5,
-                                    marginBottom: 5,
                                     minWidth: 0,
                                     mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
                                     color: '#dc166c',
                                 }}>
                                 <CurrencyBitcoinIcon />
@@ -260,15 +266,18 @@ const Dashboard = () => {
                             />
                         </ListItemButton>
 
-                        <ListItemButton onClick={handleClickCricket}>
+                        <ListItemButton
+                            onClick={handleClickCricket}
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                                height: '20%',
+                            }}>
                             <ListItemIcon
                                 sx={{
-                                    alignSelf: 'center',
-                                    marginTop: 5,
-                                    marginBottom: 5,
                                     minWidth: 0,
                                     mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
                                     color: '#dc166c',
                                 }}>
                                 <SportsCricketIcon />
@@ -280,15 +289,19 @@ const Dashboard = () => {
                             />
                         </ListItemButton>
 
-                        <ListItemButton>
+                        <ListItemButton
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                                height: '20%',
+                            }}>
                             <ListItemIcon
                                 sx={{
-                                    alignSelf: 'center',
-                                    marginTop: 5,
-                                    marginBottom: 5,
+                                    // marginTop: 5,
+                                    // marginBottom: 5,
                                     minWidth: 0,
                                     mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
                                     color: '#dc166c',
                                 }}>
                                 <SportsSoccerIcon />
@@ -300,15 +313,18 @@ const Dashboard = () => {
                             />
                         </ListItemButton>
 
-                        <ListItemButton onClick={handleClickAdvertisment}>
+                        <ListItemButton
+                            onClick={handleClickAdvertisment}
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                                height: '20%',
+                            }}>
                             <ListItemIcon
                                 sx={{
-                                    alignSelf: 'center',
-                                    marginTop: 5,
-                                    marginBottom: 5,
                                     minWidth: 0,
                                     mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
                                     color: '#dc166c',
                                 }}>
                                 <FeaturedVideoIcon />

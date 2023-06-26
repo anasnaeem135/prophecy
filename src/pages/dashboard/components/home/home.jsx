@@ -10,7 +10,6 @@ import claimTokenAbi from 'contracts/claimTokenAbi.json';
 import ImageList from './components/imageList';
 
 import Web3 from 'web3';
-import axios from 'axios';
 import { ethers } from 'ethers';
 import { toast } from 'react-toastify';
 import { ThemeProvider } from '@mui/material/styles';
@@ -18,12 +17,15 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
 
 import User from 'images/user.png';
-import styles from './home.module.css';
+import style from './home.module.css';
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 // const web3 = new Web3(window.etherium);+
 const signer = provider.getSigner();
-const contractAddress = '0x28d730206EDaDC364B0dd15696765EBd703C35e7';
+// const contractAddress = '0x28d730206EDaDC364B0dd15696765EBd703C35e7';
+const contractAddress = '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
+
+// 0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a
 const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
 
 const Home = () => {
@@ -39,7 +41,8 @@ const Home = () => {
 
     const getCurrentBalance = async () => {
         try {
-            const userBalance = await contract.balanceOf(user.accountAddress);
+            const { accountAddress } = user;
+            const userBalance = await contract.balanceOf(accountAddress);
 
             const hex = userBalance?._hex;
 
@@ -51,7 +54,7 @@ const Home = () => {
 
             setReady(true);
         } catch (error) {
-            console.error('Error:', error);
+            toast.error(error?.reason, { hideProgressBar: true });
         }
     };
 
@@ -69,7 +72,6 @@ const Home = () => {
             });
         } catch (error) {
             toast.error(error?.reason, { hideProgressBar: true });
-            console.error('Error:', error);
         }
     };
 
@@ -102,7 +104,7 @@ const Home = () => {
                         <img
                             src={User}
                             alt="Avatar"
-                            className={styles.userAvatar}></img>
+                            className={style.userAvatar}></img>
 
                         <div>
                             <h2>
@@ -154,11 +156,7 @@ const Home = () => {
                         }}>
                         <div style={{ flex: 1 }}>
                             <div style={{ marginTop: 50 }}>
-                                <h2
-                                    style={{
-                                        fontFamily:
-                                            'Gill Sans,Gill Sans MT, Calibri, Trebuchet MS, sans-serif',
-                                    }}>
+                                <h2 className={style.heading}>
                                     Current Balance
                                 </h2>
 
@@ -191,11 +189,7 @@ const Home = () => {
                             </div>
 
                             <div style={{ marginTop: 20 }}>
-                                <h2
-                                    style={{
-                                        fontFamily:
-                                            'Gill Sans,Gill Sans MT, Calibri, Trebuchet MS, sans-serif',
-                                    }}>
+                                <h2 className={style.heading}>
                                     Transfer Tokens
                                 </h2>
 

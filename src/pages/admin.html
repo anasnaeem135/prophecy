@@ -25,7 +25,7 @@
             async function startPool(time) {
                 // Contract address and ABI
                 const contractAddress =
-                    '0xB49688a0ca8200E7E4b37595e2FCA783A7E947e4';
+                    '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
                 const contractABI = [
                     {
                         inputs: [],
@@ -378,7 +378,6 @@
                         type: 'function',
                     },
                 ];
-
                 // Connect to the contract
                 const provider = new ethers.providers.Web3Provider(
                     window.ethereum,
@@ -404,7 +403,7 @@
             async function endPool() {
                 // Contract address and ABI
                 const contractAddress =
-                    '0xB49688a0ca8200E7E4b37595e2FCA783A7E947e4';
+                    '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
                 const contractABI = [
                     {
                         inputs: [],
@@ -774,6 +773,391 @@
                     const tx = await contract.endPool(100, 120);
                     await tx.wait();
                     console.log('Pool ended successfully');
+
+                    console.log(tx);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            async function balance() {
+                // Contract address and ABI
+                const contractAddress =
+                    '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
+                const contractABI = [
+                    {
+                        inputs: [],
+                        stateMutability: 'nonpayable',
+                        type: 'constructor',
+                    },
+                    {
+                        anonymous: false,
+                        inputs: [
+                            {
+                                indexed: true,
+                                internalType: 'address',
+                                name: 'owner',
+                                type: 'address',
+                            },
+                            {
+                                indexed: true,
+                                internalType: 'address',
+                                name: 'spender',
+                                type: 'address',
+                            },
+                            {
+                                indexed: false,
+                                internalType: 'uint256',
+                                name: 'value',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'Approval',
+                        type: 'event',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'spender',
+                                type: 'address',
+                            },
+                            {
+                                internalType: 'uint256',
+                                name: 'amount',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'approve',
+                        outputs: [
+                            {
+                                internalType: 'bool',
+                                name: '',
+                                type: 'bool',
+                            },
+                        ],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'recipient',
+                                type: 'address',
+                            },
+                        ],
+                        name: 'claimTokens',
+                        outputs: [],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'spender',
+                                type: 'address',
+                            },
+                            {
+                                internalType: 'uint256',
+                                name: 'subtractedValue',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'decreaseAllowance',
+                        outputs: [
+                            {
+                                internalType: 'bool',
+                                name: '',
+                                type: 'bool',
+                            },
+                        ],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'uint256',
+                                name: 'currentPrice',
+                                type: 'uint256',
+                            },
+                            {
+                                internalType: 'uint256',
+                                name: 'originalPrice',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'endPool',
+                        outputs: [],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'bool',
+                                name: 'betLong',
+                                type: 'bool',
+                            },
+                            {
+                                internalType: 'uint256',
+                                name: 'amount',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'enterPool',
+                        outputs: [],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'spender',
+                                type: 'address',
+                            },
+                            {
+                                internalType: 'uint256',
+                                name: 'addedValue',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'increaseAllowance',
+                        outputs: [
+                            {
+                                internalType: 'bool',
+                                name: '',
+                                type: 'bool',
+                            },
+                        ],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'uint256',
+                                name: 'poolDuration',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'startPool',
+                        outputs: [],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'to',
+                                type: 'address',
+                            },
+                            {
+                                internalType: 'uint256',
+                                name: 'amount',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'transfer',
+                        outputs: [
+                            {
+                                internalType: 'bool',
+                                name: '',
+                                type: 'bool',
+                            },
+                        ],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        anonymous: false,
+                        inputs: [
+                            {
+                                indexed: true,
+                                internalType: 'address',
+                                name: 'from',
+                                type: 'address',
+                            },
+                            {
+                                indexed: true,
+                                internalType: 'address',
+                                name: 'to',
+                                type: 'address',
+                            },
+                            {
+                                indexed: false,
+                                internalType: 'uint256',
+                                name: 'value',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'Transfer',
+                        type: 'event',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'from',
+                                type: 'address',
+                            },
+                            {
+                                internalType: 'address',
+                                name: 'to',
+                                type: 'address',
+                            },
+                            {
+                                internalType: 'uint256',
+                                name: 'amount',
+                                type: 'uint256',
+                            },
+                        ],
+                        name: 'transferFrom',
+                        outputs: [
+                            {
+                                internalType: 'bool',
+                                name: '',
+                                type: 'bool',
+                            },
+                        ],
+                        stateMutability: 'nonpayable',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'owner',
+                                type: 'address',
+                            },
+                            {
+                                internalType: 'address',
+                                name: 'spender',
+                                type: 'address',
+                            },
+                        ],
+                        name: 'allowance',
+                        outputs: [
+                            {
+                                internalType: 'uint256',
+                                name: '',
+                                type: 'uint256',
+                            },
+                        ],
+                        stateMutability: 'view',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [
+                            {
+                                internalType: 'address',
+                                name: 'account',
+                                type: 'address',
+                            },
+                        ],
+                        name: 'balanceOf',
+                        outputs: [
+                            {
+                                internalType: 'uint256',
+                                name: '',
+                                type: 'uint256',
+                            },
+                        ],
+                        stateMutability: 'view',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [],
+                        name: 'decimals',
+                        outputs: [
+                            {
+                                internalType: 'uint8',
+                                name: '',
+                                type: 'uint8',
+                            },
+                        ],
+                        stateMutability: 'view',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [],
+                        name: 'getContractBalance',
+                        outputs: [
+                            {
+                                internalType: 'uint256',
+                                name: '',
+                                type: 'uint256',
+                            },
+                        ],
+                        stateMutability: 'view',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [],
+                        name: 'name',
+                        outputs: [
+                            {
+                                internalType: 'string',
+                                name: '',
+                                type: 'string',
+                            },
+                        ],
+                        stateMutability: 'view',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [],
+                        name: 'symbol',
+                        outputs: [
+                            {
+                                internalType: 'string',
+                                name: '',
+                                type: 'string',
+                            },
+                        ],
+                        stateMutability: 'view',
+                        type: 'function',
+                    },
+                    {
+                        inputs: [],
+                        name: 'totalSupply',
+                        outputs: [
+                            {
+                                internalType: 'uint256',
+                                name: '',
+                                type: 'uint256',
+                            },
+                        ],
+                        stateMutability: 'view',
+                        type: 'function',
+                    },
+                ];
+
+                // Connect to the contract
+                const provider = new ethers.providers.Web3Provider(
+                    window.ethereum,
+                );
+                const signer = provider.getSigner();
+                const contract = new ethers.Contract(
+                    contractAddress,
+                    contractABI,
+                    signer,
+                );
+
+                try {
+                    // Call the endPool function
+                    const tx = await contract.balanceOf(
+                        '0x02a227424b07eF0A86Eda1448B3982dF9405Db0C',
+                    );
+                    console.log('Your balance', tx);
+                    const { _hex } = tx;
+                    const ok = parseInt(_hex);
+                    // await tx.wait();
+
+                    console.log(ok);
                 } catch (error) {
                     console.log(error);
                 }
@@ -784,8 +1168,11 @@
         <h1>Pool Management</h1>
         <button onclick="connect()">Connect to MetaMask</button>
         <br /><br />
-        <button onclick="startPool(120)">Start Pool</button>
+        <button onclick="startPool(300)">Start Pool</button>
         <br /><br />
         <button onclick="endPool(100,120)">End Pool</button>
+        <br /><br />
+
+        <button onclick="balance()">balance</button>
     </body>
 </html>

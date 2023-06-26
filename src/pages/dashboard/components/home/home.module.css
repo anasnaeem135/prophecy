@@ -4,12 +4,8 @@
     align-self: center;
     margin-inline-start: 10px;
 }
-root::-webkit-scrollbar {
-    display: none !important;
-}
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.list {
-    -ms-overflow-style: none !important; /* IE and Edge */
-    scrollbar-width: none !important; /* Firefox */
+.heading {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Login from 'pages/login/Login';
 import Loader from 'components/loader';

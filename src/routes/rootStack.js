@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+
 import Signup from 'pages/signup/Signup';
 import useUserStore from 'stores/userStore';
 import Dashboard from 'pages/dashboard/Dashboard';
@@ -34,6 +37,9 @@ const RootStack = () => {
                 navigate('/connectWallet', { replace: true });
                 setReady(true);
             }, 1500);
+        } else {
+            setReady(true);
+            toast.error(response?.message, { hideProgressBar: true });
         }
     };
 
