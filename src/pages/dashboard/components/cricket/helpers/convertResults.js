@@ -17,8 +17,3 @@ export const convertCricketFixture = arr => {
         throw e;
     }
 };
-
-const print = item =>
-    item.map(index => {
-        <h4>{item[index]}</h4>;
-    });

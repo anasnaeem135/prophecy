@@ -5,14 +5,16 @@ import { theme } from 'styles/theme';
 import Loader from 'components/loader';
 import useUserStore from 'stores/userStore';
 import CustomButton from 'components/button';
-import claimTokenAbi from 'contracts/claimTokenAbi.json';
 import ImageList from './components/imageList';
+import claimTokenAbi from 'contracts/claimTokenAbi.json';
 
 import { ethers } from 'ethers';
 import { toast } from 'react-toastify';
 import { ThemeProvider } from '@mui/material/styles';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
+
+import { LoadingButtons } from 'components/button';
 
 import User from 'images/user.png';
 import style from './home.module.css';
@@ -26,6 +28,7 @@ const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
 const Home = () => {
     const [ready, setReady] = useState(false);
     const [balance, setBalance] = useState(0);
+    const [loading, setLoading] = useState(false);
     const [tokenName, setTokenName] = useState('');
 
     const user = useUserStore(state => state.user);
@@ -35,6 +38,8 @@ const Home = () => {
     }, []);
 
     const getCurrentBalance = async () => {
+        setLoading(true);
+
         try {
             const { accountAddress } = user;
             const userBalance = await contract.balanceOf(accountAddress);
@@ -45,9 +50,7 @@ const Home = () => {
 
             setBalance(amount);
 
-            await getTokenName();
-
-            setReady(true);
+            await getTokenName().then(setLoading(false), setReady(true));
         } catch (error) {
             toast.error(error?.reason, { hideProgressBar: true });
         }
@@ -60,7 +63,7 @@ const Home = () => {
 
     const claimPrcTokens = async () => {
         try {
-            const claim = await contract.claimTokens(user.accountAddress);
+            await contract.claimTokens(user.accountAddress);
 
             toast.success('Tokens claimed successfully', {
                 hideProgressBar: true,
@@ -74,7 +77,7 @@ const Home = () => {
         const { recieverAdd, amount } = formData;
 
         try {
-            const sendPrc = await contract.transfer(recieverAdd, amount);
+            await contract.transfer(recieverAdd, amount);
 
             toast.success('Tokens transferred successfully', {
                 hideProgressBar: true,
@@ -95,6 +98,7 @@ const Home = () => {
                             display: 'flex',
                             flexDirection: 'row',
                             gap: 20,
+                            borderRadius: 20,
                         }}>
                         <img
                             src={User}
@@ -155,29 +159,29 @@ const Home = () => {
                                     Current Balance
                                 </h2>
 
-                                <h4
+                                <div
                                     style={{
                                         alignItems: 'center',
                                         display: 'flex',
                                         width: '40%',
                                         gap: 10,
                                     }}>
-                                    {balance} {tokenName}
-                                    <ThemeProvider theme={theme}>
-                                        <CustomButton
-                                            title="Refresh"
-                                            icon={<RefreshIcon />}
-                                            onClick={getCurrentBalance}
-                                            size="small"
-                                        />
-                                    </ThemeProvider>
-                                </h4>
+                                    <h4>
+                                        {balance} {tokenName}
+                                    </h4>
+
+                                    <LoadingButtons
+                                        title="Refresh"
+                                        loading={loading}
+                                        onClick={getCurrentBalance}
+                                    />
+                                </div>
 
                                 <br></br>
 
                                 <CustomButton
                                     title="Claim PRC"
-                                    size="large"
+                                    size="medium"
                                     icon={<CallReceivedIcon />}
                                     onClick={claimPrcTokens}
                                 />

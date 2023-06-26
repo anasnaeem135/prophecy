@@ -31,7 +31,6 @@ export default function StandardImageList() {
                 <ImageList
                     sx={{
                         height: 350,
-
                         scrollbarColor: 'transparent transparent',
                         maxHeight: '100vh',
                         overflowX: 'hidden',

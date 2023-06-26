@@ -1,30 +1,18 @@
 .main {
     width: 100%;
     bottom: 0;
-    height: 130px;
+    height: 10rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     display: flex;
-    /* background: linear-gradient(
-        to bottom right,
-        #ec7553,
-        #f5903f,
-        #df3c63,
-        #e35063,
-        #da2564,
-        #dc166c,
-        #e45c5c,
-        #f18344,
-        #dc5c5c
-    ); */
+
     background: #dc166c;
 }
 
 .logo {
     width: 90px;
     height: 90px;
-    /* padding: 10px; */
 }
 
 .title {

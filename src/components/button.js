@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { theme } from 'styles/theme';
 import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from 'styles/theme';
+
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const CustomButton = ({
     size,
@@ -24,6 +26,26 @@ const CustomButton = ({
                 disabled={disable}>
                 {title}
             </Button>
+        </ThemeProvider>
+    );
+};
+
+export const LoadingButtons = ({
+    loading,
+    title,
+    onClick,
+    color = 'primary',
+}) => {
+    return (
+        <ThemeProvider theme={theme}>
+            <LoadingButton
+                loading={loading}
+                variant="outlined"
+                onClick={onClick}
+                color={color}
+                sx={{ borderRadius: 50 }}>
+                {title}
+            </LoadingButton>
         </ThemeProvider>
     );
 };

@@ -42,7 +42,7 @@ const Form = ({
                         <input
                             className={style.inputFields}
                             type="string"
-                            style={{ width: '25%' }}
+                            style={{ width: '30%' }}
                             placeholder="Enter receiver account address"
                             onChange={handleChange('recieverAdd')}
                             onBlur={handleBlur('recieverAdd')}
@@ -61,7 +61,7 @@ const Form = ({
 
                         <input
                             className={style.inputFields}
-                            style={{ width: '25%' }}
+                            style={{ width: '30%' }}
                             type="number"
                             placeholder="Enter amount"
                             onChange={handleChange('amount')}
@@ -78,7 +78,7 @@ const Form = ({
                         <br></br>
 
                         <CustomButton
-                            size="large"
+                            size="medium"
                             title="Send"
                             icon={<SendIcon />}
                             onClick={handleSubmit}

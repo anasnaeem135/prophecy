@@ -1,9 +1,9 @@
 import React from 'react';
 import Routing from 'routes/router';
 
-import './App.css';
-
 import 'react-toastify/dist/ReactToastify.css';
+
+import './App.css';
 
 const App = () => {
     return <Routing />;

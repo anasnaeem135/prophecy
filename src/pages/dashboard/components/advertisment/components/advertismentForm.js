@@ -92,6 +92,13 @@ const Form = ({ initialValues = { amount: '', file: null }, onSubmit }) => {
                             </div>
                         </div>
 
+                        <p style={{ fontSize: 15, textAlign: 'start' }}>
+                            Note* You need 2 PRC Tokens to uplaod an
+                            advertisment
+                        </p>
+
+                        <br></br>
+
                         <CustomButton
                             size="large"
                             title="Upload"

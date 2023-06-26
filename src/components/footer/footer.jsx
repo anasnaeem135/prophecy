@@ -1,7 +1,9 @@
 import React from 'react';
-import LogoBgWhite from 'images/logo-bg-white.png';
-import style from './footer.module.css';
+
 import CustomButton from 'components/button';
+import LogoBgWhite from 'images/logo-bg-white.png';
+
+import style from './footer.module.css';
 
 const Footer = () => {
     const handleClickHome = () => {
@@ -33,6 +35,7 @@ const Footer = () => {
                     title="About Us"
                     size="medium"
                     color="secondary"
+                    onClick={handleClickHome}
                 />
             </div>
 
