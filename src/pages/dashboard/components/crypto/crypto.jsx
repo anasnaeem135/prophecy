@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Loader from 'components/loader';
+import { toast } from 'react-toastify';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import Modal from '@mui/material/Modal';
@@ -15,7 +16,6 @@ import TableHead from '@mui/material/TableHead';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import claimTokenAbi from 'contracts/claimTokenAbi.json';
-import { toast } from 'react-toastify';
 
 import { cryptoApi } from './helpers/api';
 import style from './crypto.module.css';
@@ -242,7 +242,7 @@ const Crypto = () => {
                                                                 ? column.format(
                                                                       value,
                                                                   )
-                                                                : value}
+                                                                : value}{' '}
                                                         </TableCell>
                                                     );
                                                 })}

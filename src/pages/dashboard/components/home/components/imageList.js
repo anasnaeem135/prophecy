@@ -30,17 +30,19 @@ export default function StandardImageList() {
             {ready ? (
                 <ImageList
                     sx={{
-                        // width: '40%',
-                        // overflow: '-moz-hidden-scrollable',
                         height: 350,
-                        // overflowY: 'hidden',
-                        overflow: 'auto',
-                        // scrollbarWidth: 'thin',
+
                         scrollbarColor: 'transparent transparent',
                         maxHeight: '100vh',
-                        // marginTop: 10,
-                        // marginInlineEnd: 5,
-                        // scrollbarColor: '#dc166c',
+                        overflowX: 'hidden',
+                        overflow: 'auto',
+                        '&::-webkit-scrollbar': {
+                            width: '0.4em',
+                            background: 'transparent',
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            background: 'transparent',
+                        },
                     }}
                     cols={3}
                     rowHeight={164}>

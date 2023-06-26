@@ -5,11 +5,9 @@ import { theme } from 'styles/theme';
 import Loader from 'components/loader';
 import useUserStore from 'stores/userStore';
 import CustomButton from 'components/button';
-import { getAdvertisments } from './helpers/api';
 import claimTokenAbi from 'contracts/claimTokenAbi.json';
 import ImageList from './components/imageList';
 
-import Web3 from 'web3';
 import { ethers } from 'ethers';
 import { toast } from 'react-toastify';
 import { ThemeProvider } from '@mui/material/styles';
@@ -20,12 +18,9 @@ import User from 'images/user.png';
 import style from './home.module.css';
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
-// const web3 = new Web3(window.etherium);+
 const signer = provider.getSigner();
-// const contractAddress = '0x28d730206EDaDC364B0dd15696765EBd703C35e7';
 const contractAddress = '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
 
-// 0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a
 const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
 
 const Home = () => {
@@ -202,8 +197,6 @@ const Home = () => {
                                 width: '40%',
                                 height: 450,
                                 marginTop: 50,
-                                // marginInlineEnd: 5,
-                                // scrollbarColor: '#dc166c',
                             }}>
                             <h2
                                 style={{
