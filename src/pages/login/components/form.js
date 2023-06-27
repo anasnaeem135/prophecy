@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, useFormik } from 'formik';
+import React, { useState } from 'react';
+
+import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
-import { loginValidationSchema } from '../helpers/validationSchema';
-import { ThemeProvider } from '@mui/material/styles';
 import SendIcon from '@mui/icons-material/Send';
-
+import { ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import CustomButton from 'components/button';
+
 import { theme } from 'styles/theme';
+import CustomButton from 'components/button';
+import { loginValidationSchema } from '../helpers/validationSchema';
 
 import style from '../Login.module.css';
 
@@ -16,23 +17,6 @@ const Form = ({
     initialValues = { email: '', password: '', remember: false },
     onSubmit,
 }) => {
-    // const ok = useFormik();
-
-    // useEffect(() => {
-    //     const enterKeyListener = event => {
-    //         if (event.key === 'Enter') {
-    //             console.log('Enter pressed');
-    //             // ok.handleSubmit();
-    //         }
-    //     };
-
-    //     document.addEventListener('keydown', enterKeyListener);
-
-    //     return () => {
-    //         document.removeEventListener('keydown', enterKeyListener);
-    //     };
-    // }, []);
-
     const [formInitialValues] = useState(initialValues);
 
     const handleOnClick = d => {

@@ -91,7 +91,8 @@ const Crypto = () => {
     const onSubmitForm = async values => {
         try {
             const { amount, isLong } = values;
-            const response = await contract.enterPool(isLong, amount);
+            console.log('isLong', isLong);
+            await contract.enterPool(isLong, amount);
 
             toast.success('Pool entered successfully', {
                 hideProgressBar: true,

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
 
 import Signup from 'pages/signup/Signup';
 import useUserStore from 'stores/userStore';
@@ -10,6 +9,8 @@ import Dashboard from 'pages/dashboard/Dashboard';
 import { loginApi } from 'pages/login/helpers/api';
 import LandingPage from 'pages/landingPage/LandingPage';
 import ConnectWallet from 'pages/connectWallet/ConnectWallet';
+
+import Admin from 'pages/admin/Admin';
 
 const RootStack = () => {
     const navigate = useNavigate();
