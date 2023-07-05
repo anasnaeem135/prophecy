@@ -8,19 +8,18 @@ import { ethers } from 'ethers';
 import { toast } from 'react-toastify';
 
 import claimTokenAbi from 'contracts/claimTokenAbi.json';
-
+import { CONTRACT_ADDRESS } from 'appConstants';
 import style from './advertisment.module.css';
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
-const contractAddress = '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
-const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
+const contract = new ethers.Contract(CONTRACT_ADDRESS, claimTokenAbi, signer);
 
 const Advertisment = () => {
     const uploadHandler = async value => {
         try {
             const { amount, file } = value;
-            await contract.transfer(contractAddress, amount);
+            await contract.transfer(CONTRACT_ADDRESS, amount);
             uploadAdvertisment(file);
         } catch (error) {
             toast.error(error?.reason, { hideProgressBar: true });

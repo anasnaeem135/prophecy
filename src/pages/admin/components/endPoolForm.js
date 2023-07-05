@@ -57,6 +57,8 @@ const Form = ({
                                 errors.currentPrice}
                         </p>
 
+                        <br></br>
+
                         <input
                             // style={{}}
                             type="number"

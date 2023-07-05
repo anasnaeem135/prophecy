@@ -15,18 +15,18 @@ import { ToastContainer } from 'react-toastify';
 import TableHead from '@mui/material/TableHead';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
-import claimTokenAbi from 'contracts/claimTokenAbi.json';
+import claimTokenAbi from 'contracts/abi.json';
 
 import { cryptoApi } from './helpers/api';
 import style from './crypto.module.css';
 import Form from './components/cryptoForm';
+import { CONTRACT_ADDRESS } from 'appConstants';
 
 import { ethers } from 'ethers';
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
 const signer = provider.getSigner();
-const contractAddress = '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
-const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
+const contract = new ethers.Contract(CONTRACT_ADDRESS, claimTokenAbi, signer);
 
 const styleModal = {
     position: 'absolute',
@@ -91,7 +91,6 @@ const Crypto = () => {
     const onSubmitForm = async values => {
         try {
             const { amount, isLong } = values;
-            console.log('isLong', isLong);
             await contract.enterPool(isLong, amount);
 
             toast.success('Pool entered successfully', {

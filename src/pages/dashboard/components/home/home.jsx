@@ -6,24 +6,21 @@ import Loader from 'components/loader';
 import useUserStore from 'stores/userStore';
 import CustomButton from 'components/button';
 import ImageList from './components/imageList';
-import claimTokenAbi from 'contracts/claimTokenAbi.json';
+import claimTokenAbi from 'contracts/abi.json';
 
 import { ethers } from 'ethers';
 import { toast } from 'react-toastify';
-import { ThemeProvider } from '@mui/material/styles';
-import RefreshIcon from '@mui/icons-material/Refresh';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
 
 import { LoadingButtons } from 'components/button';
 
 import User from 'images/user.png';
 import style from './home.module.css';
-
+import { CONTRACT_ADDRESS } from 'appConstants';
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
-const contractAddress = '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
 
-const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
+const contract = new ethers.Contract(CONTRACT_ADDRESS, claimTokenAbi, signer);
 
 const Home = () => {
     const [ready, setReady] = useState(false);

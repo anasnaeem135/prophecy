@@ -48,6 +48,8 @@ const Form = ({ initialValues = { time: '' }, onSubmit }) => {
                             onBlur={handleBlur('time')}
                         />
 
+                        <br></br>
+
                         <p>{errors.time && touched.time && errors.time}</p>
 
                         <CustomButton

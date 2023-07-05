@@ -5,20 +5,22 @@ import { ToastContainer, toast } from 'react-toastify';
 import CustomButton from 'components/button';
 import StartPoolForm from './components/startPoolForm';
 import EndPoolForm from './components/endPoolForm';
-import claimTokenAbi from 'contracts/claimTokenAbi.json';
+import claimTokenAbi from 'contracts/abi.json';
 
 import style from './Admin.module.css';
 
+import { CONTRACT_ADDRESS } from 'appConstants';
 import { ethers } from 'ethers';
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
 const signer = provider.getSigner();
-const contractAddress = '0xdA8567DDd93FA9aA8C60600e333F42ab8aA7d53a';
-const contract = new ethers.Contract(contractAddress, claimTokenAbi, signer);
+const contract = new ethers.Contract(CONTRACT_ADDRESS, claimTokenAbi, signer);
 
 const Admin = () => {
     const [disable, setDisable] = useState(false);
     const [address, setAddress] = useState();
+
+    console.log(CONTRACT_ADDRESS);
 
     const handleConnectButton = () => {
         if (window.ethereum !== undefined) {
