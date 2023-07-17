@@ -14,12 +14,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
 import Loader from 'components/loader';
-import { footBallApi } from '../helpers/api';
-import { convertCricketFixture } from '../helpers/convertResults';
+import { footBallApi } from './helpers/api';
+import { convertFootballFixture } from './helpers/convertResults';
 
-import style from './crypto.module.css';
+import style from './football.module.css';
 
-import Form from './cricket/components/cricketForm';
+import Form from './components/footballForm';
 
 const styleModal = {
     position: 'absolute',
@@ -55,7 +55,7 @@ const Football = () => {
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
     useEffect(() => {
-        fetchCricket();
+        fetchFootballApi();
     }, []);
 
     const handleChangePage = (event, newPage) => {
@@ -67,12 +67,13 @@ const Football = () => {
         setPage(0);
     };
 
-    async function fetchCricket() {
-        const response = await footBallApi();
-        if (response?.status === 200) {
-            const { results } = response?.data;
+    async function fetchFootballApi() {
+        const result = await footBallApi();
 
-            setRow(convertCricketFixture(results));
+        if (result?.status === 200) {
+            const { response } = result?.data;
+
+            setRow(convertFootballFixture(response));
             setReady(true);
         }
     }

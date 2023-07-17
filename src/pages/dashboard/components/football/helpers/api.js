@@ -5,7 +5,6 @@ export async function footBallApi() {
     const response = await axios
         .get('http://localhost:8080/football')
         .then(function (response) {
-            console.log('Football Res', response);
             return response;
         })
         .catch(function (err) {

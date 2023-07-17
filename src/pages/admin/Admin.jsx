@@ -20,8 +20,6 @@ const Admin = () => {
     const [disable, setDisable] = useState(false);
     const [address, setAddress] = useState();
 
-    console.log(CONTRACT_ADDRESS);
-
     const handleConnectButton = () => {
         if (window.ethereum !== undefined) {
             connectMetamask()

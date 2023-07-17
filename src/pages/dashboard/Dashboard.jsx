@@ -27,6 +27,7 @@ import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 
 import Home from './components/home/home';
 import Crypto from './components/crypto/crypto';
+import Football from './components/football/football';
 import Cricket from './components/cricket/cricket';
 import useUserStore from 'stores/userStore';
 import Header from 'components/header/header';
@@ -123,12 +124,14 @@ const Dashboard = () => {
     const [showCrypto, setShowCrypto] = useState(false);
     const [showCricket, setShowCricket] = useState(false);
     const [showAdvertisment, setShowAdvertisment] = useState(false);
+    const [showFootball, setShowFootball] = useState(false);
 
     const handleClickHome = () => {
         setShowHome(true);
         setShowCricket(false);
         setShowCrypto(false);
         setShowAdvertisment(false);
+        setShowFootball(false);
     };
 
     const handleClickCrypto = () => {
@@ -136,6 +139,7 @@ const Dashboard = () => {
         setShowHome(false);
         setShowCricket(false);
         setShowAdvertisment(false);
+        setShowFootball(false);
     };
 
     const handleClickCricket = () => {
@@ -143,6 +147,7 @@ const Dashboard = () => {
         setShowHome(false);
         setShowCricket(true);
         setShowAdvertisment(false);
+        setShowFootball(false);
     };
 
     const handleClickAdvertisment = () => {
@@ -150,6 +155,15 @@ const Dashboard = () => {
         setShowHome(false);
         setShowCricket(false);
         setShowAdvertisment(true);
+        setShowFootball(false);
+    };
+
+    const handleClickFootball = () => {
+        setShowCrypto(false);
+        setShowHome(false);
+        setShowCricket(false);
+        setShowAdvertisment(false);
+        setShowFootball(true);
     };
 
     const handleDrawerOpen = () => {
@@ -290,6 +304,7 @@ const Dashboard = () => {
                         </ListItemButton>
 
                         <ListItemButton
+                            onClick={handleClickFootball}
                             sx={{
                                 minHeight: 48,
                                 justifyContent: open ? 'initial' : 'center',
@@ -350,6 +365,7 @@ const Dashboard = () => {
                 {showHome ? <Home /> : null}
                 {showCrypto ? <Crypto /> : null}
                 {showCricket ? <Cricket /> : null}
+                {showFootball ? <Football /> : null}
                 {showAdvertisment ? <Advertisment /> : null}
             </Box>
             <ToastContainer />

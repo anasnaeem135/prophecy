@@ -104,7 +104,7 @@ const Crypto = () => {
     async function fetchCoinMarketCap() {
         const response = await cryptoApi();
         if (response?.status === 200) {
-            const { BTC, SOL, DOGE, DOT, BNB, SHIB } = response?.data;
+            const { BTC, SOL, DOGE, DOT, BNB, SHIB, MATIC } = response?.data;
 
             temp.push(
                 createData(
@@ -142,6 +142,12 @@ const Crypto = () => {
                     SHIB[0].symbol,
                     SHIB[0].quote.USD.price,
                     SHIB[0].quote.USD.percent_change_24h,
+                ),
+                createData(
+                    MATIC[0].name,
+                    MATIC[0].symbol,
+                    MATIC[0].quote.USD.price,
+                    MATIC[0].quote.USD.percent_change_24h,
                 ),
             );
 

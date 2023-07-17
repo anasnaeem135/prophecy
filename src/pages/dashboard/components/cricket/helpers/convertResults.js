@@ -1,10 +1,12 @@
+import { convertDate } from 'helpers/convertDate';
+
 export const convertCricketFixture = arr => {
     try {
         let retArr = [];
         arr?.map(item => {
             let obj = {
                 venue: item?.venue,
-                date: item?.date,
+                date: convertDate(item?.date),
                 title: item?.match_title,
                 home: item?.home?.name,
                 away: item?.away?.name,

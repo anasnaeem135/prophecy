@@ -50,6 +50,7 @@ const Home = () => {
             await getTokenName().then(setLoading(false), setReady(true));
         } catch (error) {
             toast.error(error?.reason, { hideProgressBar: true });
+            setLoading(false);
         }
     };
 
